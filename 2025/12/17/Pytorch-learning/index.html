@@ -19,26 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="📅 今日思考今天搭建博客虽然遇到了一点小波折（Node找不到路径），但在重置环境变量后终于解决了。感悟： 遇到报错不要慌，看清楚提示，一步步排查就是解决问题的过程。 💻 代码片段这是我为了测试网页显示代码效果写的 Python 示例： # 这是一个计算圆面积的函数 import math  def calculate_area(radius):     if radius &lt; 0:">
+    <meta name="description" content="Pytorch learning04_pytorch_custom_datasets1print(&quot;pytoch_custom_datasets&quot;)    学习这部分  上课 无聊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first blog">
-<meta property="og:url" content="http://example.com/2025/12/17/My-first-blog/index.html">
+<meta property="og:title" content="Pytorch learning">
+<meta property="og:url" content="http://example.com/2025/12/17/Pytorch-learning/index.html">
 <meta property="og:site_name" content="小空间">
-<meta property="og:description" content="📅 今日思考今天搭建博客虽然遇到了一点小波折（Node找不到路径），但在重置环境变量后终于解决了。感悟： 遇到报错不要慌，看清楚提示，一步步排查就是解决问题的过程。 💻 代码片段这是我为了测试网页显示代码效果写的 Python 示例： # 这是一个计算圆面积的函数 import math  def calculate_area(radius):     if radius &lt; 0:">
+<meta property="og:description" content="Pytorch learning04_pytorch_custom_datasets1print(&quot;pytoch_custom_datasets&quot;)    学习这部分  上课 无聊">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-17T11:40:19.000Z">
-<meta property="article:modified_time" content="2025-12-17T11:41:29.951Z">
+<meta property="article:published_time" content="2025-12-17T12:15:55.000Z">
+<meta property="article:modified_time" content="2025-12-17T12:21:15.606Z">
 <meta property="article:author" content="御陵美影">
+<meta property="article:tag" content="Deep Learning">
+<meta property="article:tag" content="Pytorch">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2025/12/17/My-first-blog/">
+<link rel="canonical" href="http://example.com/2025/12/17/Pytorch-learning/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/12/17/My-first-blog/","path":"2025/12/17/My-first-blog/","title":"My first blog"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/12/17/Pytorch-learning/","path":"2025/12/17/Pytorch-learning/","title":"Pytorch learning"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>My first blog | 小空间</title>
+<title>Pytorch learning | 小空间</title>
   
 
 
@@ -120,7 +122,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%85-%E4%BB%8A%E6%97%A5%E6%80%9D%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">📅 今日思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%BB-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5"><span class="nav-number">2.</span> <span class="nav-text">💻 代码片段</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pytorch-learning"><span class="nav-number">1.</span> <span class="nav-text">Pytorch learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#04-pytorch-custom-datasets"><span class="nav-number">1.1.</span> <span class="nav-text">04_pytorch_custom_datasets</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -179,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/12/17/My-first-blog/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/12/17/Pytorch-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -192,12 +194,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="My first blog | 小空间">
+      <meta itemprop="name" content="Pytorch learning | 小空间">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          My first blog
+          Pytorch learning
         </h1>
 
         <div class="post-meta-container">
@@ -209,7 +211,16 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-12-17 19:40:19 / 修改时间：19:41:29" itemprop="dateCreated datePublished" datetime="2025-12-17T19:40:19+08:00">2025-12-17</time>
+      <time title="创建时间：2025-12-17 20:15:55 / 修改时间：20:21:15" itemprop="dateCreated datePublished" datetime="2025-12-17T20:15:55+08:00">2025-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Pytorch/" itemprop="url" rel="index"><span itemprop="name">Pytorch</span></a>
+        </span>
     </span>
 
   
@@ -221,19 +232,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="📅-今日思考"><a href="#📅-今日思考" class="headerlink" title="📅 今日思考"></a>📅 今日思考</h2><p>今天搭建博客虽然遇到了一点小波折（Node找不到路径），但在重置环境变量后终于解决了。<br><strong>感悟：</strong> 遇到报错不要慌，看清楚提示，一步步排查就是解决问题的过程。</p>
-<h2 id="💻-代码片段"><a href="#💻-代码片段" class="headerlink" title="💻 代码片段"></a>💻 代码片段</h2><p>这是我为了测试网页显示代码效果写的 Python 示例：</p>
-<pre><code class="language-python"># 这是一个计算圆面积的函数
-import math
+    <div class="post-body" itemprop="articleBody"><h2 id="Pytorch-learning"><a href="#Pytorch-learning" class="headerlink" title="Pytorch learning"></a>Pytorch learning</h2><h3 id="04-pytorch-custom-datasets"><a href="#04-pytorch-custom-datasets" class="headerlink" title="04_pytorch_custom_datasets"></a>04_pytorch_custom_datasets</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytoch_custom_datasets&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-def calculate_area(radius):
-    if radius &lt; 0:
-        return &quot;半径不能为负数&quot;
-    area = math.pi * (radius ** 2)
-    return round(area, 2)
+<ul>
+<li><input disabled="" type="checkbox"> 学习这部分</li>
+<li><input checked="" disabled="" type="checkbox"> 上课</li>
+<li>无聊</li>
+</ul>
+<span id="more"></span>
 
-print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
-</code></pre>
+<blockquote>
+<p>临近期末，令人感慨。</p>
+</blockquote>
 
     </div>
 
@@ -242,19 +252,20 @@ print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Pytorch/" rel="tag"># Pytorch</a>
+              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/12/17/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-angle-left"></i> Hello World
+                <a href="/2025/12/17/My-first-blog/" rel="prev" title="My first blog">
+                  <i class="fa fa-angle-left"></i> My first blog
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/12/17/Pytorch-learning/" rel="next" title="Pytorch learning">
-                  Pytorch learning <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
