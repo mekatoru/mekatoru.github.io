@@ -167,18 +167,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -259,6 +259,92 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/12/18/pytorch-custom-datasets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/12/18/pytorch-custom-datasets/" class="post-title-link" itemprop="url">pytorch_custom_datasets</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-12-18 00:02:30 / 修改时间：00:29:44" itemprop="dateCreated datePublished" datetime="2025-12-18T00:02:30+08:00">2025-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/pytorch/" itemprop="url" rel="index"><span itemprop="name">pytorch</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>随便写点，加深记忆</p>
+<p>···python<br>import torch<br>import torchvision<br>import torchvision.transforms as transforms<br>from pathlib import Path<br>import os<br>from PIL import Image<br>from typing import Tuple,Dict,List</p>
+<p>def find_classes(dir:str)-&gt;Tuple[List[str],Dict[str,int]]:<br>    # 1. 获取所有类别文件夹的名称<br>    classes &#x3D; sorted(entry.name for entry in os.scandir(dir) if entry,is_dir())<br>    # 2.没找到则报错<br>    if not classes:<br>        raise FileNotFoundError(f”Couldn’t find any class folder in {dir}.”)<br>    # 3. 给每个类别分配一个数字索引<br>    class_to_idx &#x3D; {cls_name: i for i, cls_name in enumerate(classes)}<br>    return classes,class_to_idx</p>
+<p>from torch.utils.data import Dataset</p>
+<p>class ImageFolderCustom(Dataset):<br>    def <strong>init</strong>(self, targ_dir:str, transform&#x3D;None)-&gt;None:<br>        #  Get all image paths<br>        self.paths &#x3D; list(pathlib.Path(targ_dir).glob(“<em>&#x2F;</em>.jpg”))<br>        # transforms<br>        self.transform &#x3D; transform<br>        # Create class and class_to_idx<br>        self.classes,self.class_to_idx &#x3D; find_classes(targ_dir)</p>
+<pre><code>def load_image(self,index:int)-&gt;Image.Image:
+    image_path = self.paths[index]
+</code></pre>
 
       
     </div>

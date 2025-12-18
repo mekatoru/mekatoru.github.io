@@ -19,12 +19,6 @@ print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>try the sticky:1</title>
-    <url>/2025/12/17/try-the-sticky-1/</url>
-    <content><![CDATA[<h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Pytorch learning</title>
     <url>/2025/12/17/Pytorch-learning/</url>
     <content><![CDATA[<h2 id="Pytorch-learning"><a href="#Pytorch-learning" class="headerlink" title="Pytorch learning"></a>Pytorch learning</h2><h3 id="04-pytorch-custom-datasets"><a href="#04-pytorch-custom-datasets" class="headerlink" title="04_pytorch_custom_datasets"></a>04_pytorch_custom_datasets</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytoch_custom_datasets&quot;</span>)</span><br></pre></td></tr></table></figure>
@@ -46,6 +40,32 @@ print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
       <tags>
         <tag>Pytorch</tag>
         <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>try the sticky:1</title>
+    <url>/2025/12/17/try-the-sticky-1/</url>
+    <content><![CDATA[<h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>pytorch_custom_datasets</title>
+    <url>/2025/12/18/pytorch-custom-datasets/</url>
+    <content><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>随便写点，加深记忆</p>
+<p>···python<br>import torch<br>import torchvision<br>import torchvision.transforms as transforms<br>from pathlib import Path<br>import os<br>from PIL import Image<br>from typing import Tuple,Dict,List</p>
+<p>def find_classes(dir:str)-&gt;Tuple[List[str],Dict[str,int]]:<br>    # 1. 获取所有类别文件夹的名称<br>    classes &#x3D; sorted(entry.name for entry in os.scandir(dir) if entry,is_dir())<br>    # 2.没找到则报错<br>    if not classes:<br>        raise FileNotFoundError(f”Couldn’t find any class folder in {dir}.”)<br>    # 3. 给每个类别分配一个数字索引<br>    class_to_idx &#x3D; {cls_name: i for i, cls_name in enumerate(classes)}<br>    return classes,class_to_idx</p>
+<p>from torch.utils.data import Dataset</p>
+<p>class ImageFolderCustom(Dataset):<br>    def <strong>init</strong>(self, targ_dir:str, transform&#x3D;None)-&gt;None:<br>        #  Get all image paths<br>        self.paths &#x3D; list(pathlib.Path(targ_dir).glob(“<em>&#x2F;</em>.jpg”))<br>        # transforms<br>        self.transform &#x3D; transform<br>        # Create class and class_to_idx<br>        self.classes,self.class_to_idx &#x3D; find_classes(targ_dir)</p>
+<pre><code>def load_image(self,index:int)-&gt;Image.Image:
+    image_path = self.paths[index]
+</code></pre>
+]]></content>
+      <categories>
+        <category>pytorch</category>
+      </categories>
+      <tags>
+        <tag>pytorch</tag>
+        <tag>custom_datasets</tag>
       </tags>
   </entry>
 </search>

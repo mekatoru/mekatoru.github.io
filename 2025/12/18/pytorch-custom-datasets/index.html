@@ -19,25 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+    <meta name="description" content="Introduction随便写点，加深记忆 ···pythonimport torchimport torchvisionimport torchvision.transforms as transformsfrom pathlib import Pathimport osfrom PIL import Imagefrom typing import Tuple,Dict,List def fin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch_custom_datasets">
+<meta property="og:url" content="http://example.com/2025/12/18/pytorch-custom-datasets/index.html">
 <meta property="og:site_name" content="小空间">
+<meta property="og:description" content="Introduction随便写点，加深记忆 ···pythonimport torchimport torchvisionimport torchvision.transforms as transformsfrom pathlib import Pathimport osfrom PIL import Imagefrom typing import Tuple,Dict,List def fin">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-17T08:30:00.000Z">
-<meta property="article:modified_time" content="2025-12-17T12:31:19.780Z">
+<meta property="article:published_time" content="2025-12-17T16:02:30.000Z">
+<meta property="article:modified_time" content="2025-12-17T16:29:44.581Z">
 <meta property="article:author" content="御陵美影">
+<meta property="article:tag" content="custom_datasets">
+<meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/">
+<link rel="canonical" href="http://example.com/2025/12/18/pytorch-custom-datasets/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/tags/index.html","path":"tags/index.html","title":"tags"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/12/18/pytorch-custom-datasets/","path":"2025/12/18/pytorch-custom-datasets/","title":"pytorch_custom_datasets"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>tags | 小空间
-</title>
+<title>pytorch_custom_datasets | 小空间</title>
   
 
 
@@ -143,7 +146,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -156,6 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,42 +209,114 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/12/18/pytorch-custom-datasets/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pytorch_custom_datasets | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pytorch_custom_datasets
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-12-18 00:02:30 / 修改时间：00:29:44" itemprop="dateCreated datePublished" datetime="2025-12-18T00:02:30+08:00">2025-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/pytorch/" itemprop="url" rel="index"><span itemprop="name">pytorch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body"><div class="tag-cloud">
-  <div class="tag-cloud-title">
-    目前共计 4 个标签
-  </div>
-  <div class="tag-cloud-tags">
-    <a href="/tags/Deep-Learning/" style="font-size: 12px;" class="tag-cloud-0">Deep Learning</a> <a href="/tags/Pytorch/" style="font-size: 12px;" class="tag-cloud-0">Pytorch</a> <a href="/tags/custom-datasets/" style="font-size: 12px;" class="tag-cloud-0">custom_datasets</a> <a href="/tags/pytorch/" style="font-size: 12px;" class="tag-cloud-0">pytorch</a>
-  </div>
-</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>随便写点，加深记忆</p>
+<p>···python<br>import torch<br>import torchvision<br>import torchvision.transforms as transforms<br>from pathlib import Path<br>import os<br>from PIL import Image<br>from typing import Tuple,Dict,List</p>
+<p>def find_classes(dir:str)-&gt;Tuple[List[str],Dict[str,int]]:<br>    # 1. 获取所有类别文件夹的名称<br>    classes &#x3D; sorted(entry.name for entry in os.scandir(dir) if entry,is_dir())<br>    # 2.没找到则报错<br>    if not classes:<br>        raise FileNotFoundError(f”Couldn’t find any class folder in {dir}.”)<br>    # 3. 给每个类别分配一个数字索引<br>    class_to_idx &#x3D; {cls_name: i for i, cls_name in enumerate(classes)}<br>    return classes,class_to_idx</p>
+<p>from torch.utils.data import Dataset</p>
+<p>class ImageFolderCustom(Dataset):<br>    def <strong>init</strong>(self, targ_dir:str, transform&#x3D;None)-&gt;None:<br>        #  Get all image paths<br>        self.paths &#x3D; list(pathlib.Path(targ_dir).glob(“<em>&#x2F;</em>.jpg”))<br>        # transforms<br>        self.transform &#x3D; transform<br>        # Create class and class_to_idx<br>        self.classes,self.class_to_idx &#x3D; find_classes(targ_dir)</p>
+<pre><code>def load_image(self,index:int)-&gt;Image.Image:
+    image_path = self.paths[index]
+</code></pre>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+              <a href="/tags/custom-datasets/" rel="tag"># custom_datasets</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/17/try-the-sticky-1/" rel="prev" title="try the sticky:1">
+                  <i class="fa fa-angle-left"></i> try the sticky:1
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>
