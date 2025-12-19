@@ -313,9 +313,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-12-18 00:02:30 / 修改时间：13:34:01" itemprop="dateCreated datePublished" datetime="2025-12-18T00:02:30+08:00">2025-12-18</time>
+      <time title="创建时间：2025-12-18 00:02:30" itemprop="dateCreated datePublished" datetime="2025-12-18T00:02:30+08:00">2025-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-19 12:00:07" itemprop="dateModified" datetime="2025-12-19T12:00:07+08:00">2025-12-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -345,6 +351,9 @@ from pathlib import Path
 import os
 from PIL import Image
 from typing import Tuple,Dict,List
+import numpy as np
+import matplotlib.pyplot as plt
+from torch import nn
 
 def find_classes(dir:str)-&gt;Tuple[List[str],Dict[str,int]]:
     # 1. 获取所有类别文件夹的名称
@@ -369,6 +378,112 @@ class ImageFolderCustom(Dataset):
 
     def load_image(self,index:int)-&gt;Image.Image:
         image_path = self.paths[index]
+
+
+
+
+import torch 
+from torchvision import datasets
+simple_transform = transforms.Compose([
+    transforms.Resize(64,64),
+    transforms.ToTensor(),
+])
+# tran_dir 就是图片所在路径
+train_data_simple = datasets.ImageFolder(root=train_dir,transform=simple_transform)
+test_data_simple = datasets.ImageFolder(root=test_dir,
+transform=simple_transform)
+
+import os
+from torch.utils.data import DataLoader
+
+BATCH_SIZE = 32
+NUM_WORKERS = os.cpu_count()
+
+train_loader_simple = DataLoader(train_data_simple,
+batch_size=BATCH_SIZE,
+shuffle=True,
+num_workers=NUM_WORKERS) 
+test_loader_simple = DataLoader(test_data_simple,
+batch_size=BATCH_SIZE,
+shuffle=False,
+num_workers=NUM_WORKERS)
+
+# 构建基础模型
+class TinyVGG(nn.Module):
+    def __init__(self,input_shape:int,hidden_units:int,output_shape:int)-&gt;None:
+        super().__init__()
+        self.conv_block_1=nn.Sequential(
+            nn.Conv2d(input_shape,hidden_units,kernel_size=3,stride=1,padding=1),
+            nn.ReLU(),
+            nn.Conv2d(hidden_units,hidden_units,kernel_size=3,
+            stride=1,padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2,stride=2)
+        )
+        self.conv_block_2=nn.Sequential(
+            nn.Conv2d(hidden_units,hidden_units,kernel_size=3,
+            stride=1,padding=1),
+            nn.ReLU(),
+            nn.Conv2d(hidden_units,hidden_units,kernel_size=3,
+            stride=1,padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2,stride=2)
+        )
+        self.classifier=nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(hidden_units*16*16,output_shape)
+        )
+    def forward(self,x:torch.Tensor):
+        return self.classifier(self.conv_block_2(self.conv_block_1(x)))
+
+    # torch.info 里的 summary可以查看模型信息 summary(model,input_shape=[1,3,64,64]) 就像这样
+
+def train_step(model:nn.Module,
+               dataloader:torch.utils.data.DataLoader,
+               loss_fn:nn.Module,
+               optimizer:torch.optim.Optimizer):
+    model.train()
+    train_loss,train_acc=0,0
+    for batch,(X,y) in enumerate(dataloader):
+        X,y=X.to(device),y.to(device)
+        
+        y_pred=model(X)
+
+        loss=loss_fn(y_pred,y)
+        train_loss+=loss.item()
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        y_pred_class=torch.argmax(torch.softmax(y_pred,dim=1))
+        train_acc+=(y_pred_class==y).sum().item()/len(y_pred)
+    train_loss/=len(dataloader)
+    train_acc/=len(dataloader)
+    return train_loss,train_acc
+
+def test_step(model:nn.Module,
+              dataloader:torch.utils.data.DataLoader,
+              loss_fn:nn.Module):
+    model.eval()
+    test_loss,test_acc=0,0
+
+    with torch.inference_mode():
+        for batch,(X,y) in enumerate(dataloader):
+            X,y=X.to(device),y.to(device)
+
+            test_pred_logits=model(X)
+
+            loss=loss_fn(test_pred_logits,y)
+            test_loss+=loss.item()
+
+            test_pred_labels=test_pred_logits.argmax(dim=1)
+            test_acc+=(test_pred_labels==y).sum().item()/len(test_pred_labels)
+    test_loss/=len(dataloader)
+    test_acc/=len(dataloader)
+    return test_loss,test_acc
+    # len(dataset)是数据总数，len(dataloader)是批次总数
+    
 </code></pre>
 
       
