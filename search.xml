@@ -19,30 +19,6 @@ print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>Pytorch learning</title>
-    <url>/posts/652d2f19/</url>
-    <content><![CDATA[<h2 id="Pytorch-learning"><a href="#Pytorch-learning" class="headerlink" title="Pytorch learning"></a>Pytorch learning</h2><h3 id="04-pytorch-custom-datasets"><a href="#04-pytorch-custom-datasets" class="headerlink" title="04_pytorch_custom_datasets"></a>04_pytorch_custom_datasets</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytoch_custom_datasets&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><input disabled="" type="checkbox"> 学习这部分</li>
-<li><input checked="" disabled="" type="checkbox"> 上课</li>
-<li>无聊</li>
-</ul>
-<span id="more"></span>
-
-<blockquote>
-<p>临近期末，令人感慨。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Pytorch</category>
-      </categories>
-      <tags>
-        <tag>Pytorch</tag>
-        <tag>Deep Learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>try to set the picture and zip</title>
     <url>/posts/50a54de4/</url>
     <content><![CDATA[<h1 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h1><p>尝试一下放图片和链接</p>
@@ -213,5 +189,29 @@ def test_step(model:nn.Module,
     <url>/posts/cef494bd/</url>
     <content><![CDATA[<h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Pytorch learning</title>
+    <url>/posts/652d2f19/</url>
+    <content><![CDATA[<h2 id="Pytorch-learning"><a href="#Pytorch-learning" class="headerlink" title="Pytorch learning"></a>Pytorch learning</h2><h3 id="04-pytorch-custom-datasets"><a href="#04-pytorch-custom-datasets" class="headerlink" title="04_pytorch_custom_datasets"></a>04_pytorch_custom_datasets</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytoch_custom_datasets&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><input disabled="" type="checkbox"> 学习这部分</li>
+<li><input checked="" disabled="" type="checkbox"> 上课</li>
+<li>无聊</li>
+</ul>
+<span id="more"></span>
+
+<blockquote>
+<p>临近期末，令人感慨。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Pytorch</category>
+      </categories>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Deep Learning</tag>
+      </tags>
   </entry>
 </search>
