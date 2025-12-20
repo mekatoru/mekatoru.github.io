@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>My first blog</title>
-    <url>/2025/12/17/My-first-blog/</url>
-    <content><![CDATA[<h2 id="📅-今日思考"><a href="#📅-今日思考" class="headerlink" title="📅 今日思考"></a>📅 今日思考</h2><p>今天搭建博客虽然遇到了一点小波折（Node找不到路径），但在重置环境变量后终于解决了。<br><strong>感悟：</strong> 遇到报错不要慌，看清楚提示，一步步排查就是解决问题的过程。</p>
-<h2 id="💻-代码片段"><a href="#💻-代码片段" class="headerlink" title="💻 代码片段"></a>💻 代码片段</h2><p>这是我为了测试网页显示代码效果写的 Python 示例：</p>
-<pre><code class="language-python"># 这是一个计算圆面积的函数
-import math
+    <title>try to set the picture and zip</title>
+    <url>/2025/12/19/page/</url>
+    <content><![CDATA[<h1 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h1><p>尝试一下放图片和链接</p>
+<span id="more"></span>
 
-def calculate_area(radius):
-    if radius &lt; 0:
-        return &quot;半径不能为负数&quot;
-    area = math.pi * (radius ** 2)
-    return round(area, 2)
-
-print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
-</code></pre>
+<p><img src="/images/background.jpg" alt="我的背景图片"></p>
+<p><a href="/download/helloworld.zip">下载某代码</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>try the sticky:1</title>
+    <url>/2025/12/17/try-the-sticky-1/</url>
+    <content><![CDATA[<h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
 ]]></content>
   </entry>
   <entry>
@@ -41,12 +39,6 @@ print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
         <tag>Pytorch</tag>
         <tag>Deep Learning</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>try the sticky:1</title>
-    <url>/2025/12/17/try-the-sticky-1/</url>
-    <content><![CDATA[<h2 id="try-the-sticky-1"><a href="#try-the-sticky-1" class="headerlink" title="try the sticky:1"></a>try the sticky:1</h2><p>This is the first post with sticky:1.<br>我只是试下置顶功能，看看效果如何。</p>
-]]></content>
   </entry>
   <entry>
     <title>pytorch_custom_datasets</title>
@@ -205,13 +197,21 @@ def test_step(model:nn.Module,
       </tags>
   </entry>
   <entry>
-    <title>try to set the picture and zip</title>
-    <url>/2025/12/19/page/</url>
-    <content><![CDATA[<h1 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h1><p>尝试一下放图片和链接</p>
-<span id="more"></span>
+    <title>My first blog</title>
+    <url>/2025/12/17/My-first-blog/</url>
+    <content><![CDATA[<h2 id="📅-今日思考"><a href="#📅-今日思考" class="headerlink" title="📅 今日思考"></a>📅 今日思考</h2><p>今天搭建博客虽然遇到了一点小波折（Node找不到路径），但在重置环境变量后终于解决了。<br><strong>感悟：</strong> 遇到报错不要慌，看清楚提示，一步步排查就是解决问题的过程。</p>
+<h2 id="💻-代码片段"><a href="#💻-代码片段" class="headerlink" title="💻 代码片段"></a>💻 代码片段</h2><p>这是我为了测试网页显示代码效果写的 Python 示例：</p>
+<pre><code class="language-python"># 这是一个计算圆面积的函数
+import math
 
-<p><img src="/images/background.jpg" alt="我的背景图片"></p>
-<p><a href="/download/helloworld.zip">下载某代码</a></p>
+def calculate_area(radius):
+    if radius &lt; 0:
+        return &quot;半径不能为负数&quot;
+    area = math.pi * (radius ** 2)
+    return round(area, 2)
+
+print(f&quot;半径为5的圆面积是: {calculate_area(5)}&quot;)
+</code></pre>
 ]]></content>
   </entry>
 </search>
