@@ -12,7 +12,8 @@ document.addEventListener('page:loaded', async () => {
   // 直接获取当前页面的路径（例如 /posts/cef494bd/）
   // 因为你装了 abbrlink，这个路径现在是纯英文的，绝对安全！
   var cleanId = location.pathname;
-
+  console.log("正在尝试使用的ID是：", cleanId);
+  console.log("这个ID是Latin1吗？", /^[\u0000-\u00ff]*$/.test(cleanId));
   // 双重保险：如果路径太长（极小概率），截取前50个字符
   if (cleanId.length > 50) {
     cleanId = cleanId.substring(0, 50);
