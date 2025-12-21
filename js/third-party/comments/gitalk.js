@@ -1,4 +1,4 @@
-/* global NexT, CONFIG, Gitalk, md5 */
+/* global NexT, CONFIG, Gitalk */
 
 document.addEventListener('page:loaded', async () => {
   if (!CONFIG.page.comments) return;
@@ -8,9 +8,15 @@ document.addEventListener('page:loaded', async () => {
     condition: window.Gitalk
   });
 
-  // 获取当前的路径，并进行 MD5 加密
-  // 这是为了确保 ID 永远是合法的 32 位字符，解决 btoa 报错
-  var gitalkId = md5(location.pathname);
+  // 【核心修改】
+  // 直接获取当前页面的路径（例如 /posts/cef494bd/）
+  // 因为你装了 abbrlink，这个路径现在是纯英文的，绝对安全！
+  var cleanId = location.pathname;
+
+  // 双重保险：如果路径太长（极小概率），截取前50个字符
+  if (cleanId.length > 50) {
+    cleanId = cleanId.substring(0, 50);
+  }
 
   const gitalk = new Gitalk({
     clientID           : CONFIG.gitalk.client_id,
@@ -19,8 +25,8 @@ document.addEventListener('page:loaded', async () => {
     owner              : CONFIG.gitalk.github_id,
     admin              : [CONFIG.gitalk.admin_user],
     
-    // 【核心修改】这里不再读取配置，而是直接使用我们算好的 MD5
-    id                 : gitalkId,
+    // 强制使用浏览器地址栏的路径作为 ID
+    id                 : cleanId,
     
     proxy              : CONFIG.gitalk.proxy,
     language           : CONFIG.gitalk.language || window.navigator.language,
