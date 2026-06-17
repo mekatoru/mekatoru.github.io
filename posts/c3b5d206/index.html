@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mekatoru.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;README.md, day14_open_source_reading&#x2F;COGVIDEO_MAP.md, day14_open_source_reading&#x2F;REPO_READING">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lesson 14：开源视频生成项目阅读">
+<meta property="og:url" content="https://mekatoru.github.io/posts/c3b5d206/index.html">
+<meta property="og:site_name" content="小空间">
+<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;README.md, day14_open_source_reading&#x2F;COGVIDEO_MAP.md, day14_open_source_reading&#x2F;REPO_READING">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-16T17:24:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T01:48:17.981Z">
+<meta property="article:author" content="御陵美影">
+<meta property="article:tag" content="Lesson 14">
+<meta property="article:tag" content="开源阅读">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="视频生成">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mekatoru.github.io/posts/c3b5d206/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mekatoru.github.io/posts/c3b5d206/","path":"posts/c3b5d206/","title":"Lesson 14：开源视频生成项目阅读"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lesson 14：开源视频生成项目阅读 | 小空间</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小空间</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goal"><span class="nav-number">1.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CogVideo-Repo-Structure-Snapshot"><span class="nav-number">2.</span> <span class="nav-text">CogVideo Repo Structure Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reading-Order"><span class="nav-number">3.</span> <span class="nav-text">Reading Order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-We-Are-Looking-For"><span class="nav-number">4.</span> <span class="nav-text">What We Are Looking For</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-To-Previous-Lessons"><span class="nav-number">5.</span> <span class="nav-text">Connection To Previous Lessons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Reading-Rule"><span class="nav-number">6.</span> <span class="nav-text">First Reading Rule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CogVideo-CogVideoX-Reading-Map"><span class="nav-number">7.</span> <span class="nav-text">CogVideo &#x2F; CogVideoX Reading Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-This-Repo"><span class="nav-number">7.1.</span> <span class="nav-text">Why This Repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Top-Level-Directories"><span class="nav-number">7.2.</span> <span class="nav-text">Top-Level Directories</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#README-Signals"><span class="nav-number">7.3.</span> <span class="nav-text">README Signals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Read-It"><span class="nav-number">7.4.</span> <span class="nav-text">How To Read It</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Things-To-Notice"><span class="nav-number">7.5.</span> <span class="nav-text">Things To Notice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Questions"><span class="nav-number">7.6.</span> <span class="nav-text">First Questions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repo-Reading-Template"><span class="nav-number">8.</span> <span class="nav-text">Repo Reading Template</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Basic-Info"><span class="nav-number">8.1.</span> <span class="nav-text">1. Basic Info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Directory-Map"><span class="nav-number">8.2.</span> <span class="nav-text">2. Directory Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Inference-Path"><span class="nav-number">8.3.</span> <span class="nav-text">3. Inference Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Training-Finetune-Path"><span class="nav-number">8.4.</span> <span class="nav-text">4. Training &#x2F; Finetune Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Model-Components"><span class="nav-number">8.5.</span> <span class="nav-text">5. Model Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Important-Shapes"><span class="nav-number">8.6.</span> <span class="nav-text">6. Important Shapes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Known-Unknowns"><span class="nav-number">8.7.</span> <span class="nav-text">7. Known Unknowns</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="御陵美影"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">御陵美影</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mekatoru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mekatoru" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1809773200qq@gmail.com" title="E-Mail → mailto:1809773200qq@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/438835519" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;438835519" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/c3b5d206/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lesson 14：开源视频生成项目阅读 | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lesson 14：开源视频生成项目阅读
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 01:24:00 / 修改时间：09:48:17" itemprop="dateCreated datePublished" datetime="2026-06-17T01:24:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">视频生成</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day14_open_source_reading/README.md</code>, <code>day14_open_source_reading/COGVIDEO_MAP.md</code>, <code>day14_open_source_reading/REPO_READING_TEMPLATE.md</code></p>
+</blockquote>
+<p>这节课当前还没有单独的 <code>STUDY_NOTES.md</code>，所以先把 README、CogVideo 阅读地图和 repo 阅读模板整理成一篇学习笔记。</p>
+<p>本节课从我们自己写的小模型，过渡到真实开源视频生成项目。</p>
+<p>案例项目：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CogVideo / CogVideoX</span><br><span class="line">https://github.com/zai-org/CogVideo</span><br></pre></td></tr></table></figure>
+
+<h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>学习拿到一个开源 repo 后如何拆地图：</p>
+<ol>
+<li>先看 README，确认项目能做什么。</li>
+<li>看目录结构，区分 inference、finetune、model、tools。</li>
+<li>找推理入口，理解从 prompt 到 video 的路径。</li>
+<li>找训练&#x2F;微调入口，理解数据、模型、loss、optimizer 的路径。</li>
+<li>找模型定义，确认 VAE、Transformer&#x2F;DiT、scheduler、text encoder 在哪里。</li>
+<li>看配置和脚本，而不是一开始就扎进所有源码。</li>
+</ol>
+<h2 id="CogVideo-Repo-Structure-Snapshot"><a href="#CogVideo-Repo-Structure-Snapshot" class="headerlink" title="CogVideo Repo Structure Snapshot"></a>CogVideo Repo Structure Snapshot</h2><p>GitHub 页面显示的主要目录包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">finetune/</span><br><span class="line">inference/</span><br><span class="line">resources/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br><span class="line">README.md</span><br><span class="line">requirements.txt</span><br><span class="line">pyproject.toml</span><br></pre></td></tr></table></figure>
+
+<p>可以先这样理解：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">inference/  推理入口：从 prompt 或 image 生成 video</span><br><span class="line">finetune/   微调入口：用自己的数据继续训练部分参数</span><br><span class="line">sat/        SAT 版本模型和训练/推理代码</span><br><span class="line">tools/      数据处理、转换、辅助脚本</span><br><span class="line">resources/ 文档、图片、示例资源</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reading-Order"><a href="#Reading-Order" class="headerlink" title="Reading Order"></a>Reading Order</h2><p>不要从所有 Python 文件开始读。</p>
+<p>推荐顺序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">README</span><br><span class="line">-&gt; requirements / pyproject</span><br><span class="line">-&gt; inference entry</span><br><span class="line">-&gt; finetune entry</span><br><span class="line">-&gt; model definition</span><br><span class="line">-&gt; scheduler / sampling</span><br><span class="line">-&gt; dataset / dataloader</span><br><span class="line">-&gt; config</span><br></pre></td></tr></table></figure>
+
+<h2 id="What-We-Are-Looking-For"><a href="#What-We-Are-Looking-For" class="headerlink" title="What We Are Looking For"></a>What We Are Looking For</h2><p>读视频生成 repo 时，永远追这几条线：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. prompt 怎么变成 text embedding</span><br><span class="line">2. video / latent 的形状是什么</span><br><span class="line">3. VAE 在哪里 encode / decode</span><br><span class="line">4. Transformer / DiT 输入输出是什么</span><br><span class="line">5. scheduler / sampler 怎么一步步去噪或更新 latent</span><br><span class="line">6. CFG 在哪里做</span><br><span class="line">7. 训练时 loss 是怎么构造的</span><br><span class="line">8. 多卡、混合精度、checkpoint 怎么接入</span><br></pre></td></tr></table></figure>
+
+<h2 id="Connection-To-Previous-Lessons"><a href="#Connection-To-Previous-Lessons" class="headerlink" title="Connection To Previous Lessons"></a>Connection To Previous Lessons</h2><p>你前面学过的内容会在开源项目里变成真实模块：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VAE                 -&gt; video encode/decode</span><br><span class="line">DDPM / FlowMatching -&gt; scheduler / training objective</span><br><span class="line">CFG                 -&gt; guidance_scale / classifier-free guidance</span><br><span class="line">Attention / DiT     -&gt; transformer blocks</span><br><span class="line">Video tensor        -&gt; latent/video shape</span><br><span class="line">Training engineering -&gt; accelerate/DDP/mixed precision/checkpoint</span><br></pre></td></tr></table></figure>
+
+<h2 id="First-Reading-Rule"><a href="#First-Reading-Rule" class="headerlink" title="First Reading Rule"></a>First Reading Rule</h2><p>第一遍读源码，不追求每一行都懂。</p>
+<p>第一遍只回答：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">入口在哪里？</span><br><span class="line">数据往哪里走？</span><br><span class="line">模型在哪里？</span><br><span class="line">输出在哪里？</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h1 id="CogVideo-CogVideoX-Reading-Map"><a href="#CogVideo-CogVideoX-Reading-Map" class="headerlink" title="CogVideo &#x2F; CogVideoX Reading Map"></a>CogVideo &#x2F; CogVideoX Reading Map</h1><p>Source:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/zai-org/CogVideo</span><br></pre></td></tr></table></figure>
+
+<h2 id="Why-This-Repo"><a href="#Why-This-Repo" class="headerlink" title="Why This Repo"></a>Why This Repo</h2><p>CogVideoX 是一个真实的视频生成开源项目，仓库同时包含：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inference</span><br><span class="line">finetune</span><br><span class="line">SAT version</span><br><span class="line">tools</span><br><span class="line">requirements</span><br><span class="line">README</span><br></pre></td></tr></table></figure>
+
+<p>适合用来练习源码阅读，而不是一开始就陷入单个函数。</p>
+<h2 id="Top-Level-Directories"><a href="#Top-Level-Directories" class="headerlink" title="Top-Level Directories"></a>Top-Level Directories</h2><p>从 GitHub 仓库页面可见的主要目录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">finetune/</span><br><span class="line">inference/</span><br><span class="line">resources/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br></pre></td></tr></table></figure>
+
+<p>初步解释：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">finetune/   微调相关代码</span><br><span class="line">inference/  推理 demo 和生成入口</span><br><span class="line">resources/ 资源和说明材料</span><br><span class="line">sat/        SAT 版本代码</span><br><span class="line">tools/      辅助工具</span><br></pre></td></tr></table></figure>
+
+<h2 id="README-Signals"><a href="#README-Signals" class="headerlink" title="README Signals"></a>README Signals</h2><p>README 里出现了几个重要线索：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Quick Start</span><br><span class="line">SAT</span><br><span class="line">Diffusers</span><br><span class="line">Inference</span><br><span class="line">finetune</span><br><span class="line">Project Structure</span><br><span class="line">Model Introduction</span><br></pre></td></tr></table></figure>
+
+<p>这说明这个 repo 不是只有一个模型文件，而是有多条使用路径：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffusers 推理路径</span><br><span class="line">SAT 推理/训练路径</span><br><span class="line">finetune 微调路径</span><br></pre></td></tr></table></figure>
+
+<h2 id="How-To-Read-It"><a href="#How-To-Read-It" class="headerlink" title="How To Read It"></a>How To Read It</h2><p>第一遍只读地图：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">README.md</span><br><span class="line">requirements.txt</span><br><span class="line">inference/</span><br><span class="line">finetune/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br></pre></td></tr></table></figure>
+
+<p>第二遍追推理：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">-&gt; text encoding</span><br><span class="line">-&gt; latent noise</span><br><span class="line">-&gt; transformer / denoiser</span><br><span class="line">-&gt; scheduler loop</span><br><span class="line">-&gt; VAE decode</span><br><span class="line">-&gt; save video</span><br></pre></td></tr></table></figure>
+
+<p>第三遍追微调：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">video dataset</span><br><span class="line">-&gt; captions</span><br><span class="line">-&gt; VAE encode</span><br><span class="line">-&gt; sample timestep / noise</span><br><span class="line">-&gt; transformer prediction</span><br><span class="line">-&gt; loss</span><br><span class="line">-&gt; optimizer / checkpoint</span><br></pre></td></tr></table></figure>
+
+<h2 id="Things-To-Notice"><a href="#Things-To-Notice" class="headerlink" title="Things To Notice"></a>Things To Notice</h2><ol>
+<li>README 提到 CogVideoX 有 Diffusers 和 SAT 两种使用路径。</li>
+<li>README 中列出不同模型的显存需求、分辨率、帧数和推理精度。</li>
+<li>README 提到 VAE slicing、tiling、CPU offload、quantization 等显存优化手段。</li>
+<li>项目结构里单独有 <code>finetune/</code>，说明微调入口和推理入口通常分开。</li>
+<li>真实项目会有很多工程代码，第一遍不要试图逐行读完。</li>
+</ol>
+<h2 id="First-Questions"><a href="#First-Questions" class="headerlink" title="First Questions"></a>First Questions</h2><ol>
+<li>如果你只想生成视频，应该优先看哪个目录？</li>
+<li>如果你想用自己的数据继续训练，应该优先看哪个目录？</li>
+<li>如果你想知道模型支持什么分辨率、帧数、精度，应该优先看 README 的哪个部分？</li>
+</ol>
+<hr>
+<h1 id="Repo-Reading-Template"><a href="#Repo-Reading-Template" class="headerlink" title="Repo Reading Template"></a>Repo Reading Template</h1><p>以后读任何视频生成 repo，都可以按这个模板填。</p>
+<h2 id="1-Basic-Info"><a href="#1-Basic-Info" class="headerlink" title="1. Basic Info"></a>1. Basic Info</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Repo name:</span><br><span class="line">Paper / report:</span><br><span class="line">Main task:</span><br><span class="line">Supported input:</span><br><span class="line">Supported output:</span><br><span class="line">License:</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Directory-Map"><a href="#2-Directory-Map" class="headerlink" title="2. Directory Map"></a>2. Directory Map</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">inference:</span><br><span class="line">training / finetune:</span><br><span class="line">model:</span><br><span class="line">dataset:</span><br><span class="line">config:</span><br><span class="line">tools:</span><br><span class="line">docs:</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Inference-Path"><a href="#3-Inference-Path" class="headerlink" title="3. Inference Path"></a>3. Inference Path</h2><p>从用户输入开始追：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt / image / video</span><br><span class="line">-&gt; text encoder / image encoder</span><br><span class="line">-&gt; initial latent noise</span><br><span class="line">-&gt; transformer / diffusion model</span><br><span class="line">-&gt; scheduler / sampler loop</span><br><span class="line">-&gt; VAE decoder</span><br><span class="line">-&gt; video file</span><br></pre></td></tr></table></figure>
+
+<p>需要记录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">entry file:</span><br><span class="line">main function:</span><br><span class="line">model loading:</span><br><span class="line">guidance_scale:</span><br><span class="line">num_inference_steps:</span><br><span class="line">latent shape:</span><br><span class="line">output save path:</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Training-Finetune-Path"><a href="#4-Training-Finetune-Path" class="headerlink" title="4. Training &#x2F; Finetune Path"></a>4. Training &#x2F; Finetune Path</h2><p>从数据开始追：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dataset</span><br><span class="line">-&gt; dataloader</span><br><span class="line">-&gt; VAE encode</span><br><span class="line">-&gt; add noise / sample t</span><br><span class="line">-&gt; model forward</span><br><span class="line">-&gt; loss</span><br><span class="line">-&gt; backward</span><br><span class="line">-&gt; optimizer.step</span><br><span class="line">-&gt; checkpoint</span><br></pre></td></tr></table></figure>
+
+<p>需要记录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">entry file:</span><br><span class="line">dataset class:</span><br><span class="line">model class:</span><br><span class="line">loss function:</span><br><span class="line">optimizer:</span><br><span class="line">mixed precision:</span><br><span class="line">gradient accumulation:</span><br><span class="line">checkpoint:</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Model-Components"><a href="#5-Model-Components" class="headerlink" title="5. Model Components"></a>5. Model Components</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VAE:</span><br><span class="line">Text encoder:</span><br><span class="line">Transformer / DiT:</span><br><span class="line">Scheduler:</span><br><span class="line">Tokenizer:</span><br><span class="line">Condition module:</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Important-Shapes"><a href="#6-Important-Shapes" class="headerlink" title="6. Important Shapes"></a>6. Important Shapes</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raw video:</span><br><span class="line">latent video:</span><br><span class="line">text embedding:</span><br><span class="line">tokens:</span><br><span class="line">model output:</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-Known-Unknowns"><a href="#7-Known-Unknowns" class="headerlink" title="7. Known Unknowns"></a>7. Known Unknowns</h2><p>写下第一遍没看懂但以后要回来的地方：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">2.</span><br><span class="line">3.</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" rel="tag"># 视频生成</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/Lesson-14/" rel="tag"># Lesson 14</a>
+              <a href="/tags/%E5%BC%80%E6%BA%90%E9%98%85%E8%AF%BB/" rel="tag"># 开源阅读</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/5dd147a5/" rel="prev" title="Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis">
+                  <i class="fa fa-angle-left"></i> Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">御陵美影</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"mekatoru","repo":"mekatoru.github.io","client_id":"Ov23linp1ttkMAkNYmtH","client_secret":"99d40d1e97722c98392116bc7712b401194ec954","admin_user":"mekatoru","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"47d74b421196f21486faf7452c747c2d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

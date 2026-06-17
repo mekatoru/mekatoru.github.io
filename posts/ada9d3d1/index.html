@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mekatoru.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day05_flow_matching&#x2F;STUDY_NOTES.md  本课目标理解 Flow Matching 如何训练速度场，并从噪声分布逐步生成目标数据分布。 Flow Matching 是什么？Flow Matching 是一种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lesson 5：Flow Matching 学习笔记">
+<meta property="og:url" content="https://mekatoru.github.io/posts/ada9d3d1/index.html">
+<meta property="og:site_name" content="小空间">
+<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day05_flow_matching&#x2F;STUDY_NOTES.md  本课目标理解 Flow Matching 如何训练速度场，并从噪声分布逐步生成目标数据分布。 Flow Matching 是什么？Flow Matching 是一种">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-16T17:15:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T01:48:17.971Z">
+<meta property="article:author" content="御陵美影">
+<meta property="article:tag" content="Flow Matching">
+<meta property="article:tag" content="Lesson 5">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="视频生成">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mekatoru.github.io/posts/ada9d3d1/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mekatoru.github.io/posts/ada9d3d1/","path":"posts/ada9d3d1/","title":"Lesson 5：Flow Matching 学习笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lesson 5：Flow Matching 学习笔记 | 小空间</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小空间</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E8%AF%BE%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">本课目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-Matching-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">Flow Matching 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E8%AF%BE%E4%BA%8C%E7%BB%B4%E5%9C%86%E7%8E%AF%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.</span> <span class="nav-text">本课二维圆环实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E7%BA%BF%E8%B7%AF%E5%BE%84"><span class="nav-number">4.</span> <span class="nav-text">直线路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E9%80%9F%E5%BA%A6"><span class="nav-number">5.</span> <span class="nav-text">目标速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">训练流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">推理流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Euler-%E6%9B%B4%E6%96%B0"><span class="nav-number">8.</span> <span class="nav-text">Euler 更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E9%97%AE%E7%AD%94"><span class="nav-number">9.</span> <span class="nav-text">关键问答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%97%B6%E6%98%AF%E5%90%A6%E5%B0%B1%E6%98%AF%E6%8B%BF%E5%9C%86%E7%8E%AF%E4%BD%8D%E7%BD%AE%E5%87%8F%E5%88%9D%E5%A7%8B%E4%BD%8D%E7%BD%AE%EF%BC%9F"><span class="nav-number">9.1.</span> <span class="nav-text">训练时是否就是拿圆环位置减初始位置？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%BC%9A%E8%AE%B0%E4%BD%8F%E6%AF%8F%E4%B8%AA%E5%99%AA%E5%A3%B0%E7%82%B9%E5%AF%B9%E5%BA%94%E5%93%AA%E4%B8%AA%E5%9C%86%E7%8E%AF%E7%82%B9%E5%90%97%EF%BC%9F"><span class="nav-number">9.2.</span> <span class="nav-text">模型会记住每个噪声点对应哪个圆环点吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-loss-%E6%B2%A1%E6%9C%89%E4%B8%8B%E9%99%8D%E5%88%B0%E6%8E%A5%E8%BF%91%E9%9B%B6%EF%BC%8C%E4%BD%86%E5%88%86%E5%B8%83%E4%BB%8D%E8%83%BD%E5%BD%A2%E6%88%90%E5%9C%86%E7%8E%AF%EF%BC%9F"><span class="nav-number">9.3.</span> <span class="nav-text">为什么 loss 没有下降到接近零，但分布仍能形成圆环？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flow-Matching-%E5%92%8C-DDPM-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">9.4.</span> <span class="nav-text">Flow Matching 和 DDPM 有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%92%8C%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">图片和视频生成中的使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%88%86%E9%92%9F%E5%A4%8D%E8%BF%B0"><span class="nav-number">11.</span> <span class="nav-text">一分钟复述</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="御陵美影"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">御陵美影</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mekatoru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mekatoru" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1809773200qq@gmail.com" title="E-Mail → mailto:1809773200qq@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/438835519" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;438835519" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/ada9d3d1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lesson 5：Flow Matching 学习笔记 | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lesson 5：Flow Matching 学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 01:15:00 / 修改时间：09:48:17" itemprop="dateCreated datePublished" datetime="2026-06-17T01:15:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">视频生成</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day05_flow_matching/STUDY_NOTES.md</code></p>
+</blockquote>
+<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>理解 Flow Matching 如何训练速度场，并从噪声分布逐步生成目标数据分布。</p>
+<h2 id="Flow-Matching-是什么？"><a href="#Flow-Matching-是什么？" class="headerlink" title="Flow Matching 是什么？"></a>Flow Matching 是什么？</h2><p>Flow Matching 是一种训练方法，不是特定神经网络架构。</p>
+<p>它训练模型学习：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当前位置 x_t 在当前时间 t 应该朝哪个方向移动？</span><br></pre></td></tr></table></figure>
+
+<p>即速度场：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v(x_t, t)</span><br></pre></td></tr></table></figure>
+
+<h2 id="本课二维圆环实验"><a href="#本课二维圆环实验" class="headerlink" title="本课二维圆环实验"></a>本课二维圆环实验</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_0：标准正态噪声点</span><br><span class="line">x_1：圆环分布中的目标点</span><br></pre></td></tr></table></figure>
+
+<p>每个样本只有二维坐标：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x, y]</span><br></pre></td></tr></table></figure>
+
+<p>可视化结果虽然是一张图，但模型生成的是二维点云分布，不是图片像素，因此不需要 VAE。</p>
+<h2 id="直线路径"><a href="#直线路径" class="headerlink" title="直线路径"></a>直线路径</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_t = (1 - t) * x_0 + t * x_1</span><br></pre></td></tr></table></figure>
+
+<p>当：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = 0：x_t = x_0，位于噪声起点。</span><br><span class="line">t = 1：x_t = x_1，到达目标数据。</span><br></pre></td></tr></table></figure>
+
+<h2 id="目标速度"><a href="#目标速度" class="headerlink" title="目标速度"></a>目标速度</h2><p>将路径改写为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_t = x_0 + t * (x_1 - x_0)</span><br></pre></td></tr></table></figure>
+
+<p>对 <code>t</code> 求导：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dx_t / dt = x_1 - x_0</span><br></pre></td></tr></table></figure>
+
+<p>因此：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target_velocity = x_1 - x_0</span><br></pre></td></tr></table></figure>
+
+<p>不需要乘 <code>t</code>。</p>
+<h2 id="训练流程"><a href="#训练流程" class="headerlink" title="训练流程"></a>训练流程</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">随机采样噪声点 x_0</span><br><span class="line">-&gt; 随机采样圆环点 x_1</span><br><span class="line">-&gt; 随机选择 t</span><br><span class="line">-&gt; 构造中间状态 x_t</span><br><span class="line">-&gt; 模型接收 x_t 和 t</span><br><span class="line">-&gt; 预测速度</span><br><span class="line">-&gt; MSE(predicted_velocity, x_1 - x_0)</span><br></pre></td></tr></table></figure>
+
+<h2 id="推理流程"><a href="#推理流程" class="headerlink" title="推理流程"></a>推理流程</h2><p>推理时没有目标点 <code>x_1</code>。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">随机噪声点</span><br><span class="line">-&gt; 模型预测当前速度</span><br><span class="line">-&gt; ODE 求解器更新位置</span><br><span class="line">-&gt; 再预测速度</span><br><span class="line">-&gt; ...</span><br><span class="line">-&gt; 接近圆环分布</span><br></pre></td></tr></table></figure>
+
+<h2 id="Euler-更新"><a href="#Euler-更新" class="headerlink" title="Euler 更新"></a>Euler 更新</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_(t + dt) = x_t + dt * v(x_t, t)</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dt = 1 / sample_steps</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键问答"><a href="#关键问答" class="headerlink" title="关键问答"></a>关键问答</h2><h3 id="训练时是否就是拿圆环位置减初始位置？"><a href="#训练时是否就是拿圆环位置减初始位置？" class="headerlink" title="训练时是否就是拿圆环位置减初始位置？"></a>训练时是否就是拿圆环位置减初始位置？</h3><p>对。在这个最简直线路径实验中：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target_velocity = x_1 - x_0</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型会记住每个噪声点对应哪个圆环点吗？"><a href="#模型会记住每个噪声点对应哪个圆环点吗？" class="headerlink" title="模型会记住每个噪声点对应哪个圆环点吗？"></a>模型会记住每个噪声点对应哪个圆环点吗？</h3><p>不会。噪声点和圆环点是随机配对的。模型学习的是整体有效的速度场，而不是固定点对点映射。</p>
+<h3 id="为什么-loss-没有下降到接近零，但分布仍能形成圆环？"><a href="#为什么-loss-没有下降到接近零，但分布仍能形成圆环？" class="headerlink" title="为什么 loss 没有下降到接近零，但分布仍能形成圆环？"></a>为什么 loss 没有下降到接近零，但分布仍能形成圆环？</h3><p>随机配对导致相似中间位置可能对应不同速度。模型无法猜中每条随机路径，只能学习平均意义上的速度场。这仍然足以推动整体分布正确移动。</p>
+<h3 id="Flow-Matching-和-DDPM-有什么区别？"><a href="#Flow-Matching-和-DDPM-有什么区别？" class="headerlink" title="Flow Matching 和 DDPM 有什么区别？"></a>Flow Matching 和 DDPM 有什么区别？</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DDPM：</span><br><span class="line">通常预测噪声 epsilon。</span><br><span class="line"></span><br><span class="line">Flow Matching：</span><br><span class="line">预测速度场 velocity。</span><br></pre></td></tr></table></figure>
+
+<p>两者都可用于训练 DiT 或 U-Net 等模型。</p>
+<h2 id="图片和视频生成中的使用方式"><a href="#图片和视频生成中的使用方式" class="headerlink" title="图片和视频生成中的使用方式"></a>图片和视频生成中的使用方式</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">真实视频</span><br><span class="line">-&gt; VAE Encoder</span><br><span class="line">-&gt; 真实 latent x_1</span><br><span class="line"></span><br><span class="line">随机 latent 噪声 x_0</span><br><span class="line">+ 真实 latent x_1</span><br><span class="line">-&gt; Flow Matching 训练 DiT 预测速度</span><br><span class="line"></span><br><span class="line">推理：</span><br><span class="line">随机 latent 噪声</span><br><span class="line">-&gt; DiT 预测速度</span><br><span class="line">-&gt; ODE 求解器更新 latent</span><br><span class="line">-&gt; VAE Decoder</span><br><span class="line">-&gt; 视频</span><br></pre></td></tr></table></figure>
+
+<h2 id="一分钟复述"><a href="#一分钟复述" class="headerlink" title="一分钟复述"></a>一分钟复述</h2><p>Flow Matching 在噪声分布和目标数据分布之间定义路径。本课使用直线路径 <code>x_t=(1-t)x_0+tx_1</code>，其目标速度为 <code>x_1-x_0</code>。模型接收中间状态和时间，预测速度。推理时没有目标数据，只能从噪声出发，使用 ODE 求解器根据模型预测不断更新状态，最终接近目标分布。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" rel="tag"># 视频生成</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/Lesson-5/" rel="tag"># Lesson 5</a>
+              <a href="/tags/Flow-Matching/" rel="tag"># Flow Matching</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/daaee347/" rel="prev" title="Lesson 4：条件生成与 CFG 学习笔记">
+                  <i class="fa fa-angle-left"></i> Lesson 4：条件生成与 CFG 学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/34a0826b/" rel="next" title="Lesson 6：ODE 推理学习笔记">
+                  Lesson 6：ODE 推理学习笔记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">御陵美影</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"mekatoru","repo":"mekatoru.github.io","client_id":"Ov23linp1ttkMAkNYmtH","client_secret":"99d40d1e97722c98392116bc7712b401194ec954","admin_user":"mekatoru","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5952717e120792036dec28ece4569588"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

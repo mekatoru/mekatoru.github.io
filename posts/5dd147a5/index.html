@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"mekatoru.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day13_multi_gpu&#x2F;STUDY_NOTES.md  这一节解决什么问题Lesson 13 关注多卡训练的基础概念： 1234567DDPworld_sizeglobal batchgradient synchronizati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis">
+<meta property="og:url" content="https://mekatoru.github.io/posts/5dd147a5/index.html">
+<meta property="og:site_name" content="小空间">
+<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day13_multi_gpu&#x2F;STUDY_NOTES.md  这一节解决什么问题Lesson 13 关注多卡训练的基础概念： 1234567DDPworld_sizeglobal batchgradient synchronizati">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-16T17:23:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T01:48:17.979Z">
+<meta property="article:author" content="御陵美影">
+<meta property="article:tag" content="Lesson 13">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="视频生成">
+<meta property="article:tag" content="训练工程">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://mekatoru.github.io/posts/5dd147a5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mekatoru.github.io/posts/5dd147a5/","path":"posts/5dd147a5/","title":"Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis | 小空间</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">小空间</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E4%B8%80%E8%8A%82%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">这一节解决什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDP-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">DDP 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDP-%E4%B8%8D%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">3.</span> <span class="nav-text">DDP 不是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#world-size"><span class="nav-number">4.</span> <span class="nav-text">world_size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Batch-Size"><span class="nav-number">5.</span> <span class="nav-text">Global Batch Size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%9A%E5%8D%A1%E4%B8%8D%E4%B8%80%E5%AE%9A%E7%BA%BF%E6%80%A7%E5%8A%A0%E9%80%9F"><span class="nav-number">6.</span> <span class="nav-text">为什么多卡不一定线性加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#no-sync"><span class="nav-number">7.</span> <span class="nav-text">no_sync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E6%98%BE%E5%AD%98%E5%8C%85%E6%8B%AC%E4%BB%80%E4%B9%88"><span class="nav-number">8.</span> <span class="nav-text">训练显存包括什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A7%86%E9%A2%91%E6%A8%A1%E5%9E%8B%E6%9B%B4%E5%90%83%E6%98%BE%E5%AD%98"><span class="nav-number">9.</span> <span class="nav-text">为什么视频模型更吃显存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E8%8A%82%E5%85%B3%E9%94%AE%E7%BB%93%E8%AE%BA"><span class="nav-number">10.</span> <span class="nav-text">本节关键结论</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="御陵美影"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">御陵美影</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mekatoru" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mekatoru" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1809773200qq@gmail.com" title="E-Mail → mailto:1809773200qq@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/438835519" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;438835519" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/5dd147a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lesson 13 Study Notes: Multi-GPU Training And Memory Analysis
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 01:23:00 / 修改时间：09:48:17" itemprop="dateCreated datePublished" datetime="2026-06-17T01:23:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">视频生成</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day13_multi_gpu/STUDY_NOTES.md</code></p>
+</blockquote>
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>Lesson 13 关注多卡训练的基础概念：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DDP</span><br><span class="line">world_size</span><br><span class="line">global batch</span><br><span class="line">gradient synchronization</span><br><span class="line">no_sync</span><br><span class="line">training memory</span><br><span class="line">video attention cost</span><br></pre></td></tr></table></figure>
+
+<h2 id="DDP-是什么"><a href="#DDP-是什么" class="headerlink" title="DDP 是什么"></a>DDP 是什么</h2><p>DDP 全称：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DistributedDataParallel</span><br></pre></td></tr></table></figure>
+
+<p>中文：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分布式数据并行</span><br></pre></td></tr></table></figure>
+
+<p>它做的事情：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">多张 GPU 各自处理不同数据</span><br><span class="line">每张 GPU 上有一份完整模型</span><br><span class="line">每张 GPU 各自 forward / backward</span><br><span class="line">backward 后同步梯度</span><br><span class="line">每张 GPU 用同步后的梯度更新参数</span><br><span class="line">最后所有 GPU 上的模型参数保持一致</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DDP = 多张卡各算各的数据，然后同步梯度，一起更新同一套模型。</span><br></pre></td></tr></table></figure>
+
+<h2 id="DDP-不是什么"><a href="#DDP-不是什么" class="headerlink" title="DDP 不是什么"></a>DDP 不是什么</h2><p>普通 DDP 不是把一个模型切成几块分别放到多张卡上。</p>
+<p>所以如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型本体单张 GPU 放不下</span><br></pre></td></tr></table></figure>
+
+<p>普通 DDP 不能直接解决。</p>
+<p>因为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每张 GPU 都要放完整模型</span><br></pre></td></tr></table></figure>
+
+<p>这种情况需要更复杂的方法，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FSDP</span><br><span class="line">ZeRO</span><br><span class="line">Tensor Parallel</span><br><span class="line">Pipeline Parallel</span><br></pre></td></tr></table></figure>
+
+<h2 id="world-size"><a href="#world-size" class="headerlink" title="world_size"></a>world_size</h2><p><code>world_size</code> 是参与分布式训练的总进程数。</p>
+<p>在单机多卡 DDP 里，通常可以近似理解为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 使用的 GPU 数量</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1,2</span><br><span class="line">torchrun --nproc_per_node=2 ...</span><br></pre></td></tr></table></figure>
+
+<p>这里：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 2</span><br></pre></td></tr></table></figure>
+
+<p>如果是多机多卡：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 台机器，每台 4 张 GPU</span><br></pre></td></tr></table></figure>
+
+<p>那么通常：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 8</span><br></pre></td></tr></table></figure>
+
+<h2 id="Global-Batch-Size"><a href="#Global-Batch-Size" class="headerlink" title="Global Batch Size"></a>Global Batch Size</h2><p>公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">global_batch_size =</span><br><span class="line">    micro_batch_size</span><br><span class="line">    * world_size</span><br><span class="line">    * gradient_accumulation_steps</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">micro_batch_size = 2</span><br><span class="line">world_size = 8</span><br><span class="line">gradient_accumulation_steps = 4</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">global_batch_size = 2 * 8 * 4 = 64</span><br></pre></td></tr></table></figure>
+
+<p>含义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一次 optimizer.step() 前，全局一共看过 64 个样本。</span><br></pre></td></tr></table></figure>
+
+<p>单张卡只看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 * 4 = 8 个样本</span><br></pre></td></tr></table></figure>
+
+<p>8 张卡合起来看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">64 个样本</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么多卡不一定线性加速"><a href="#为什么多卡不一定线性加速" class="headerlink" title="为什么多卡不一定线性加速"></a>为什么多卡不一定线性加速</h2><p>理想情况：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 张卡 = 1x</span><br><span class="line">2 张卡 = 2x</span><br><span class="line">4 张卡 = 4x</span><br></pre></td></tr></table></figure>
+
+<p>真实情况通常达不到完美线性加速，原因包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">梯度同步有通信开销</span><br><span class="line">快的 GPU 要等慢的 GPU</span><br><span class="line">数据加载太慢，GPU 在等数据</span><br><span class="line">单卡 batch 太小，GPU 没吃满</span><br></pre></td></tr></table></figure>
+
+<p>这里的通信开销主要是时间和带宽开销，不是“显存开销”。</p>
+<h2 id="no-sync"><a href="#no-sync" class="headerlink" title="no_sync"></a>no_sync</h2><p>DDP 默认每次 backward 都同步梯度。</p>
+<p>但梯度累积时，前几次 backward 还不会 <code>optimizer.step()</code>，所以不一定要每次同步。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradient_accumulation_steps = 4</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第 1 次 backward：可以 no_sync</span><br><span class="line">第 2 次 backward：可以 no_sync</span><br><span class="line">第 3 次 backward：可以 no_sync</span><br><span class="line">第 4 次 backward：需要同步梯度</span><br><span class="line">然后 optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">减少梯度同步通信次数</span><br><span class="line">降低多卡训练通信开销</span><br></pre></td></tr></table></figure>
+
+<h2 id="训练显存包括什么"><a href="#训练显存包括什么" class="headerlink" title="训练显存包括什么"></a>训练显存包括什么</h2><p>训练显存不是只由模型参数决定。</p>
+<p>通常包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">模型参数</span><br><span class="line">梯度</span><br><span class="line">优化器状态</span><br><span class="line">激活值 activations</span><br><span class="line">输入数据 batch</span><br><span class="line">临时计算 buffer</span><br></pre></td></tr></table></figure>
+
+<p>激活值是前向传播过程中的中间结果。</p>
+<p>训练时要保存一部分激活值，因为反向传播需要它们来计算梯度。</p>
+<p>所以：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">训练显存通常大于推理显存</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么视频模型更吃显存"><a href="#为什么视频模型更吃显存" class="headerlink" title="为什么视频模型更吃显存"></a>为什么视频模型更吃显存</h2><p>图片张量通常是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, C, H, W]</span><br></pre></td></tr></table></figure>
+
+<p>视频张量是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, C, T, H, W]</span><br></pre></td></tr></table></figure>
+
+<p>视频多了时间维度 <code>T</code>。</p>
+<p>图片 token 数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N_image = (H / p_h) * (W / p_w)</span><br></pre></td></tr></table></figure>
+
+<p>视频 token 数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N_video = (T / p_t) * (H / p_h) * (W / p_w)</span><br></pre></td></tr></table></figure>
+
+<p>attention 矩阵大小是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N * N</span><br></pre></td></tr></table></figure>
+
+<p>所以 token 数增长后，attention 显存和计算量会平方增长。</p>
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">N = 256  -&gt; attention = 256 * 256 = 65,536</span><br><span class="line">N = 1024 -&gt; attention = 1024 * 1024 = 1,048,576</span><br></pre></td></tr></table></figure>
+
+<p>倍数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,048,576 / 65,536 = 16</span><br></pre></td></tr></table></figure>
+
+<p>也就是 token 数变成 4 倍，attention 矩阵变成 16 倍。</p>
+<h2 id="本节关键结论"><a href="#本节关键结论" class="headerlink" title="本节关键结论"></a>本节关键结论</h2><ol>
+<li>DDP 是分布式数据并行。</li>
+<li>普通 DDP 每张卡都有一份完整模型。</li>
+<li>DDP 主要提升吞吐量，不直接解决模型单卡放不下。</li>
+<li><code>world_size</code> 是总训练进程数，单机多卡时通常等于 GPU 数。</li>
+<li><code>global_batch_size = micro_batch_size * world_size * accumulation_steps</code>。</li>
+<li>多卡训练有梯度同步通信开销，所以不一定线性加速。</li>
+<li><code>no_sync</code> 可以减少梯度累积时的同步次数。</li>
+<li>训练显存包括参数、梯度、优化器状态、激活值、输入和临时 buffer。</li>
+<li>视频模型因为多了时间维度，token 和 attention 成本显著增加。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" rel="tag"># 视频生成</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+              <a href="/tags/%E8%AE%AD%E7%BB%83%E5%B7%A5%E7%A8%8B/" rel="tag"># 训练工程</a>
+              <a href="/tags/Lesson-13/" rel="tag"># Lesson 13</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2ad67733/" rel="prev" title="Lesson 12 Study Notes: Training Engineering">
+                  <i class="fa fa-angle-left"></i> Lesson 12 Study Notes: Training Engineering
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c3b5d206/" rel="next" title="Lesson 14：开源视频生成项目阅读">
+                  Lesson 14：开源视频生成项目阅读 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">御陵美影</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"mekatoru","repo":"mekatoru.github.io","client_id":"Ov23linp1ttkMAkNYmtH","client_secret":"99d40d1e97722c98392116bc7712b401194ec954","admin_user":"mekatoru","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4d682aec1285e2f856dccadddacd358c"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
