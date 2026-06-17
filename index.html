@@ -215,6 +215,509 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/8b7a77ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="御陵美影">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小空间">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+              <span class="post-sticky-flag" title="置顶">
+                <i class="fa fa-thumbtack"></i>
+              </span><a href="/posts/8b7a77ad/" class="post-title-link" itemprop="url">视频生成学习路线与笔记索引</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-06-17 01:10:00 / 修改时间：14:42:05" itemprop="dateCreated datePublished" datetime="2026-06-17T01:10:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">视频生成</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>来源：<code>E:\codex_workspace\schedule\STUDY_ROADMAP.md</code> 与 <code>lessons/*</code> 学习笔记。<br>说明：这篇是总览索引；每节课的完整学习笔记已整理成单独文章。</p>
+</blockquote>
+<h2 id="课程笔记入口"><a href="#课程笔记入口" class="headerlink" title="课程笔记入口"></a>课程笔记入口</h2><ul>
+<li><a href="/posts/aac417c8/">Lesson 1：PyTorch 训练闭环学习笔记</a></li>
+<li><a href="/posts/33cd4672/">Lesson 2：Tiny VAE 学习笔记</a></li>
+<li><a href="/posts/44ca76e4/">Lesson 3：Tiny DDPM 学习笔记</a></li>
+<li><a href="/posts/daaee347/">Lesson 4：条件生成与 CFG 学习笔记</a></li>
+<li><a href="/posts/ada9d3d1/">Lesson 5：Flow Matching 学习笔记</a></li>
+<li><a href="/posts/34a0826b/">Lesson 6：ODE 推理学习笔记</a></li>
+<li><a href="/posts/43a7b2fd/">Lesson 7：Self-Attention 学习笔记</a></li>
+<li><a href="/posts/d318af6c/">Lesson 8：Image DiT 学习笔记</a></li>
+<li><a href="/posts/a41f9ffa/">Lesson 9：视频张量与 Video VAE 学习笔记</a></li>
+<li><a href="/posts/c4d8161f/">Lesson 10：Tiny Video DiT 学习笔记</a></li>
+<li><a href="/posts/b3df2689/">Lesson 11：Controlled Tiny Video DiT</a></li>
+<li><a href="/posts/2ad67733/">Lesson 12：Training Engineering</a></li>
+<li><a href="/posts/5dd147a5/">Lesson 13：Multi-GPU Training And Memory Analysis</a></li>
+<li><a href="/posts/c3b5d206/">Lesson 14：开源视频生成项目阅读</a></li>
+</ul>
+<h2 id="原学习路线"><a href="#原学习路线" class="headerlink" title="原学习路线"></a>原学习路线</h2><p>这份文件用于固定课程边界和记录进度。</p>
+<p>规则：</p>
+<ol>
+<li>每节课开始时明确列出目标。</li>
+<li>每节课结束时做小测和总结。</li>
+<li>超纲问题可以简答，但会标注所属课程，不提前展开。</li>
+<li>只有完成练习和小测，课程状态才会改为“已完成”。</li>
+</ol>
+<h2 id="总体路线"><a href="#总体路线" class="headerlink" title="总体路线"></a>总体路线</h2><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>课程</th>
+<th>核心内容</th>
+<th>实践产物</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A. 训练基础</td>
+<td>Lesson 1</td>
+<td>PyTorch 训练闭环、梯度、checkpoint、张量形状、显存</td>
+<td>曲线拟合训练脚本</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>A. 训练基础</td>
+<td>Lesson 2</td>
+<td>VAE：编码器、latent、解码器、重构损失、KL 散度</td>
+<td>Tiny VAE</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>A. 训练基础</td>
+<td>Lesson 3</td>
+<td>DDPM：加噪、时间步、噪声预测、反向采样</td>
+<td>Tiny DDPM</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>A. 训练基础</td>
+<td>Lesson 4</td>
+<td>条件生成与 CFG</td>
+<td>条件 DDPM</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>B. 连续生成</td>
+<td>Lesson 5</td>
+<td>Flow Matching：路径、速度场、训练目标</td>
+<td>二维点云 Flow Matching</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>B. 连续生成</td>
+<td>Lesson 6</td>
+<td>ODE 推理：Euler 采样、步数与质量</td>
+<td>Flow Matching 采样器</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>C. Transformer</td>
+<td>Lesson 7</td>
+<td>Self-Attention、token、位置编码</td>
+<td>手写 Attention</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>C. Transformer</td>
+<td>Lesson 8</td>
+<td>Image DiT：patchify、adaLN、depatchify</td>
+<td>Tiny Image DiT</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>D. 视频生成</td>
+<td>Lesson 9</td>
+<td>视频张量、Video VAE、时空 patch</td>
+<td>合成视频数据集</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>D. 视频生成</td>
+<td>Lesson 10</td>
+<td>Video DiT：时空 token、时间一致性</td>
+<td>Tiny Video DiT</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>D. 视频生成</td>
+<td>Lesson 11</td>
+<td>文本或动作条件、cross-attention、CFG</td>
+<td>可控 Tiny Video DiT</td>
+<td>进行中</td>
+</tr>
+<tr>
+<td>E. 训练工程</td>
+<td>Lesson 12</td>
+<td>混合精度、梯度累积、日志、恢复训练</td>
+<td>稳定训练脚本</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>E. 训练工程</td>
+<td>Lesson 13</td>
+<td>多卡训练、显存分析、实验管理</td>
+<td>小型多卡实验</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>F. 开源项目</td>
+<td>Lesson 14</td>
+<td>拆解成熟视频生成项目</td>
+<td>源码阅读笔记</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>F. 开源项目</td>
+<td>Lesson 15</td>
+<td>推理、微调和评估</td>
+<td>可展示实验</td>
+<td>未开始</td>
+</tr>
+<tr>
+<td>G. 研究方向</td>
+<td>Lesson 16+</td>
+<td>世界模型、动作条件、长程预测、选题</td>
+<td>研究项目</td>
+<td>未开始</td>
+</tr>
+</tbody></table>
+<h2 id="当前进度"><a href="#当前进度" class="headerlink" title="当前进度"></a>当前进度</h2><h3 id="Lesson-1：PyTorch-训练闭环"><a href="#Lesson-1：PyTorch-训练闭环" class="headerlink" title="Lesson 1：PyTorch 训练闭环"></a>Lesson 1：PyTorch 训练闭环</h3><p>状态：已完成。</p>
+<p>已掌握：</p>
+<ul>
+<li><code>model(x)</code> 使用当前参数进行前向计算。</li>
+<li><code>loss.backward()</code> 计算梯度，但不修改参数。</li>
+<li><code>optimizer.step()</code> 根据梯度更新参数。</li>
+<li><code>optimizer.zero_grad()</code> 清除旧梯度，避免非预期累积。</li>
+<li>梯度累积可以用于模拟更大的 batch。</li>
+<li>视频张量常写成 <code>[B, C, T, H, W]</code>。</li>
+<li><code>float16</code> 和 <code>bfloat16</code> 可以减少显存占用并提高矩阵计算速度。</li>
+<li>checkpoint 应保存模型参数和优化器状态。</li>
+</ul>
+<p>已完成实践：</p>
+<ul>
+<li>按数据流阅读 <code>train.py</code>。</li>
+<li>对比 <code>100</code> 步和 <code>1200</code> 步训练，观察欠拟合。</li>
+<li>对比学习率 <code>0.001</code>、<code>0.1</code> 和 <code>1.0</code>。</li>
+<li>从 checkpoint 恢复训练。</li>
+<li>用自己的话解释完整训练闭环。</li>
+</ul>
+<p>实践产物：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data5/wuguanlin/practice/lessons/day01_training_loop</span><br></pre></td></tr></table></figure>
+
+<h3 id="提前接触但尚未正式学习"><a href="#提前接触但尚未正式学习" class="headerlink" title="提前接触但尚未正式学习"></a>提前接触但尚未正式学习</h3><p>这些内容只建立了初步印象，不计为完成：</p>
+<ul>
+<li>Video VAE latent。</li>
+<li>时空 patch 与 token。</li>
+<li><code>Conv3d</code> patchify。</li>
+<li>Video DiT 输入输出形状。</li>
+<li>Flow Matching 的直线路径和速度场。</li>
+</ul>
+<h2 id="下一课"><a href="#下一课" class="headerlink" title="下一课"></a>下一课</h2><h3 id="Lesson-2：Tiny-VAE"><a href="#Lesson-2：Tiny-VAE" class="headerlink" title="Lesson 2：Tiny VAE"></a>Lesson 2：Tiny VAE</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解 VAE 为什么需要 latent。</li>
+<li>区分 latent 通道数和 Transformer <code>hidden_size</code>。</li>
+<li>理解编码器、解码器、重构损失与 KL 散度。</li>
+<li>在服务器训练一个 Tiny VAE，并查看重建结果。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>训练 <code>beta=0.01</code> 的 Tiny VAE。</li>
+<li>训练 <code>beta=0</code> 的对照组。</li>
+<li>对比重构结果和随机 latent 生成结果。</li>
+<li>验证 KL 约束的权衡：取消 KL 后重构更精确，但随机生成质量下降。</li>
+<li>阅读 Tiny VAE 核心代码：Encoder、重参数化、Decoder、Loss 和训练循环。</li>
+<li>用自己的话复述 VAE 数据流和它在生成系统中的职责。</li>
+</ul>
+<h3 id="Lesson-3：Tiny-DDPM"><a href="#Lesson-3：Tiny-DDPM" class="headerlink" title="Lesson 3：Tiny DDPM"></a>Lesson 3：Tiny DDPM</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解 DDPM 的前向加噪过程。</li>
+<li>理解 <code>beta</code>、<code>alpha</code>、<code>alpha_bar</code> 和时间步 <code>t</code>。</li>
+<li>理解为什么训练目标通常是预测噪声。</li>
+<li>训练一个 Tiny DDPM，并从噪声采样生成图片。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li><p>可视化 DDPM 前向加噪过程。</p>
+</li>
+<li><p>理解 <code>beta</code>、<code>alpha</code> 和 <code>alpha_bar</code>。</p>
+</li>
+<li><p>阅读一步构造任意 <code>x_t</code> 的代码。</p>
+</li>
+<li><p>训练 Tiny DDPM，噪声预测 loss 从约 <code>1.03</code> 降至约 <code>0.045</code>。</p>
+</li>
+<li><p>查看真实样本、生成样本和反向采样过程。</p>
+</li>
+<li><p>阅读噪声预测训练循环和反向采样主干。</p>
+</li>
+<li><p>用自己的话复述 DDPM 训练与推理流程。</p>
+</li>
+<li><p>按执行顺序逐段阅读 Tiny DDPM 代码。</p>
+</li>
+<li><p>解释关键 Python 与 PyTorch 语法。</p>
+</li>
+<li><p>完成代码阅读总结。</p>
+</li>
+</ul>
+<h3 id="Lesson-4：条件生成与-CFG"><a href="#Lesson-4：条件生成与-CFG" class="headerlink" title="Lesson 4：条件生成与 CFG"></a>Lesson 4：条件生成与 CFG</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解条件生成为什么需要额外输入 <code>condition</code>。</li>
+<li>理解条件嵌入 <code>nn.Embedding</code>。</li>
+<li>理解为什么 CFG 训练时要随机丢弃一部分条件。</li>
+<li>理解 CFG 推理公式和 <code>guidance_scale</code>。</li>
+<li>训练条件 DDPM，对比无条件、普通条件和 CFG 采样结果。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>训练带有左侧、右侧和无条件标签的 Tiny DDPM。</li>
+<li>使用 <code>20%</code> 条件丢弃训练无条件预测分支。</li>
+<li>使用 CFG 生成左侧和右侧方块。</li>
+<li>对比无条件生成结果。</li>
+<li>阅读相对 Lesson 3 新增的条件嵌入、条件丢弃和 CFG 采样代码。</li>
+<li>用自己的话复述 CFG 的训练和推理流程。</li>
+</ul>
+<h3 id="Lesson-5：Flow-Matching"><a href="#Lesson-5：Flow-Matching" class="headerlink" title="Lesson 5：Flow Matching"></a>Lesson 5：Flow Matching</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解 Flow Matching 为什么要学习速度场。</li>
+<li>理解噪声起点 <code>x_0</code>、数据终点 <code>x_1</code> 和中间状态 <code>x_t</code>。</li>
+<li>理解直线路径与目标速度 <code>x_1 - x_0</code>。</li>
+<li>在二维点云上训练速度预测网络。</li>
+<li>查看噪声如何通过 Euler ODE 采样逐步变成目标分布。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>训练二维点云 Flow Matching 模型。</li>
+<li>查看噪声点云通过 Euler ODE 采样逐步变成圆环分布。</li>
+<li>理解直线路径和目标速度。</li>
+<li>阅读速度预测模型、训练 loss 和 Euler 更新代码。</li>
+<li>用自己的话复述 Flow Matching 训练与推理流程。</li>
+</ul>
+<h3 id="Lesson-6：ODE-推理"><a href="#Lesson-6：ODE-推理" class="headerlink" title="Lesson 6：ODE 推理"></a>Lesson 6：ODE 推理</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解 ODE、速度场与数值求解器的关系。</li>
+<li>理解 Euler 更新公式。</li>
+<li>比较不同采样步数的结果、误差和耗时。</li>
+<li>理解采样步数与生成质量之间的权衡。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>复用 Lesson 5 checkpoint，不重新训练模型。</li>
+<li>对比 Euler 采样 <code>5 / 10 / 20 / 50 / 100</code> 步。</li>
+<li>使用固定初始噪声进行控制变量实验。</li>
+<li>比较径向误差和推理耗时。</li>
+<li>理解求解器误差、模型误差和 GPU 预热。</li>
+<li>阅读 Euler 对比脚本并完成复述。</li>
+</ul>
+<h3 id="Lesson-7：Self-Attention"><a href="#Lesson-7：Self-Attention" class="headerlink" title="Lesson 7：Self-Attention"></a>Lesson 7：Self-Attention</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解 token、序列长度和 hidden size。</li>
+<li>理解 <code>Q</code>、<code>K</code>、<code>V</code> 的职责。</li>
+<li>手写 scaled dot-product attention。</li>
+<li>理解多头注意力为什么要拆分 hidden size。</li>
+<li>理解位置编码为什么必要。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>运行极简 scaled dot-product attention 示例。</li>
+<li>理解 <code>[B, N, D]</code>、<code>Q</code>、<code>K</code>、<code>V</code> 和注意力权重。</li>
+<li>理解注意力矩阵的平方复杂度。</li>
+<li>理解 Self-Attention 与 Cross-Attention 的区别。</li>
+<li>理解多头注意力和位置编码。</li>
+<li>完成代码阅读与复述。</li>
+</ul>
+<h3 id="Lesson-8：Image-DiT"><a href="#Lesson-8：Image-DiT" class="headerlink" title="Lesson 8：Image DiT"></a>Lesson 8：Image DiT</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解图片如何通过 patchify 变成 token 序列。</li>
+<li>理解时间嵌入如何通过 adaLN 注入 Transformer block。</li>
+<li>理解 depatchify 如何将 token 还原为图片张量。</li>
+<li>使用 Flow Matching 训练 Tiny Image DiT。</li>
+<li>使用 Euler ODE 从噪声生成图片。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>训练 Tiny Image DiT，loss 从约 <code>1.90</code> 降至约 <code>0.17</code>。</li>
+<li>理解图片 patchify 到 token 序列。</li>
+<li>理解位置编码、时间嵌入和 adaLN。</li>
+<li>理解 final projection 与 depatchify。</li>
+<li>使用 Flow Matching 与 Euler ODE 从噪声生成图片。</li>
+<li>阅读 Image DiT 核心代码并完成复述。</li>
+</ul>
+<h3 id="Lesson-9：视频张量与-Video-VAE"><a href="#Lesson-9：视频张量与-Video-VAE" class="headerlink" title="Lesson 9：视频张量与 Video VAE"></a>Lesson 9：视频张量与 Video VAE</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>理解视频张量 <code>[B, C, T, H, W]</code>。</li>
+<li>理解视频 latent 与原始 RGB 视频的区别。</li>
+<li>理解时空 patch 如何把视频变成 token。</li>
+<li>观察 token 数随时间、空间和 patch size 的变化。</li>
+<li>为 Lesson 10 的 Tiny Video DiT 做准备。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>生成移动方块视频并可视化帧序列。</li>
+<li>理解视频张量 <code>[B,C,T,H,W]</code>。</li>
+<li>理解 Video VAE 压缩如何减少数据量和 token 数。</li>
+<li>手动计算时空 patch 的 token 数、patch 维度和注意力矩阵大小。</li>
+<li>理解 patch size 与计算成本、细节保留之间的权衡。</li>
+</ul>
+<h3 id="Lesson-10：Tiny-Video-DiT"><a href="#Lesson-10：Tiny-Video-DiT" class="headerlink" title="Lesson 10：Tiny Video DiT"></a>Lesson 10：Tiny Video DiT</h3><p>状态：已完成。</p>
+<p>目标：</p>
+<ol>
+<li>将 Image DiT 扩展为 Video DiT。</li>
+<li>理解 <code>Conv3d</code> 如何进行时空 patchify。</li>
+<li>理解 <code>[B,C,T,H,W] -&gt; [B,N,D] -&gt; [B,C,T,H,W]</code> 的闭环。</li>
+<li>使用 Flow Matching 训练 Tiny Video DiT 预测视频速度场。</li>
+<li>从噪声生成短视频并观察时间一致性。</li>
+</ol>
+<p>已完成实践：</p>
+<ul>
+<li>训练 Tiny Video DiT，loss 从约 <code>2.00</code> 降至约 <code>0.067</code>。</li>
+<li>使用 <code>Conv3d</code> 完成时空 patchify。</li>
+<li>理解 <code>[B,C,T,H,W] -&gt; [B,N,D] -&gt; [B,C,T,H,W]</code> 的完整闭环。</li>
+<li>使用 Flow Matching 训练 Video DiT 预测视频速度场。</li>
+<li>使用 Euler ODE 从随机视频噪声生成短视频。</li>
+<li>阅读 Video DiT 核心代码并完成复述。</li>
+</ul>
+<h3 id="Lesson-11：可控-Tiny-Video-DiT"><a href="#Lesson-11：可控-Tiny-Video-DiT" class="headerlink" title="Lesson 11：可控 Tiny Video DiT"></a>Lesson 11：可控 Tiny Video DiT</h3><p>状态：进行中。</p>
+<p>目标：</p>
+<ol>
+<li>给 Video DiT 加入方向条件：向右、向左、无条件。</li>
+<li>理解条件嵌入如何和时间嵌入融合。</li>
+<li>理解条件丢弃如何训练 CFG 所需的无条件分支。</li>
+<li>使用 CFG 生成指定方向移动的视频。</li>
+<li>为后续文本条件和 cross-attention 做准备。</li>
+</ol>
+<h2 id="Lesson-11-Completion-Note"><a href="#Lesson-11-Completion-Note" class="headerlink" title="Lesson 11 Completion Note"></a>Lesson 11 Completion Note</h2><p>状态：已完成。</p>
+<p>本节实际内容：Controlled Tiny Video DiT，也就是在 Lesson 10 的 Video DiT 基础上加入方向条件和 CFG。</p>
+<p>已完成：</p>
+<ul>
+<li>训练可控 Tiny Video DiT。</li>
+<li>理解 <code>condition = 0 / 1 / 2</code> 分别代表向右、向左、无条件。</li>
+<li>理解 condition dropout 如何训练无条件能力。</li>
+<li>理解 CFG 推理为什么需要同时计算 <code>velocity_uncond</code> 和 <code>velocity_cond</code>。</li>
+<li>理解 <code>guidance_scale = 0 / 1 / &gt;1</code> 的含义。</li>
+<li>复习 Video DiT 的关键形状：<code>[B,C,T,H,W] -&gt; [B,N,D] -&gt; [B,C,T,H,W]</code>。</li>
+<li>确认模型最终预测的仍然是 Flow Matching 速度场。</li>
+</ul>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day11_controlled_video_dit</span><br></pre></td></tr></table></figure>
+<h2 id="Lesson-12-Start-Note"><a href="#Lesson-12-Start-Note" class="headerlink" title="Lesson 12 Start Note"></a>Lesson 12 Start Note</h2><p>状态：进行中。</p>
+<p>主题：训练工程化，包括 micro batch、gradient accumulation、mixed precision、checkpoint resume 和 loss 日志。</p>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day12_training_engineering</span><br></pre></td></tr></table></figure>
+<h2 id="Lesson-12-Completion-Note"><a href="#Lesson-12-Completion-Note" class="headerlink" title="Lesson 12 Completion Note"></a>Lesson 12 Completion Note</h2><p>状态：已完成。</p>
+<p>已完成：</p>
+<ul>
+<li>建立训练工程化脚本 <code>train_engineering.py</code>。</li>
+<li>理解 micro batch 与 effective batch 的区别。</li>
+<li>理解 gradient accumulation 的训练顺序。</li>
+<li>理解为什么累积梯度时要把 loss 除以 accumulation steps。</li>
+<li>理解 mixed precision 的目标：省显存、加速。</li>
+<li>理解 autocast 和 GradScaler 的职责。</li>
+<li>理解 checkpoint 应保存 model、optimizer、scaler、update_step、args 和随机状态。</li>
+<li>完成 resume 实验：从 <code>update_step=10</code> 恢复并继续到 <code>update=15</code>。</li>
+<li>理解 loss logging 的作用。</li>
+</ul>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day12_training_engineering</span><br></pre></td></tr></table></figure>
+<h2 id="Lesson-13-Start-Note"><a href="#Lesson-13-Start-Note" class="headerlink" title="Lesson 13 Start Note"></a>Lesson 13 Start Note</h2><p>状态：进行中。</p>
+<p>主题：多卡训练、DDP、global batch、吞吐量和显存分析。</p>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day13_multi_gpu</span><br></pre></td></tr></table></figure>
+<h2 id="Lesson-13-Completion-Note"><a href="#Lesson-13-Completion-Note" class="headerlink" title="Lesson 13 Completion Note"></a>Lesson 13 Completion Note</h2><p>状态：已完成。</p>
+<p>已完成：</p>
+<ul>
+<li>建立 DDP 演示脚本 <code>train_ddp_demo.py</code>。</li>
+<li>在服务器完成 CPU 单进程 smoke test。</li>
+<li>在服务器使用 GPU 1 和 GPU 2 完成 2 卡 DDP smoke test。</li>
+<li>理解 DDP 是分布式数据并行，不是模型切分。</li>
+<li>理解 <code>world_size</code>、<code>micro_batch_size</code>、<code>gradient_accumulation_steps</code> 与 <code>global_batch_size</code> 的关系。</li>
+<li>理解普通 DDP 主要提升吞吐量，不能直接解决模型单卡放不下。</li>
+<li>理解多卡训练的通信开销和非线性加速。</li>
+<li>理解 <code>no_sync</code> 如何减少梯度累积时的同步次数。</li>
+<li>理解训练显存不只包括模型参数，还包括梯度、优化器状态、激活值、输入和 buffer。</li>
+<li>理解视频模型因为时间维度和 attention 平方成本更吃显存。</li>
+</ul>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day13_multi_gpu</span><br></pre></td></tr></table></figure>
+<h2 id="Lesson-14-Start-Note"><a href="#Lesson-14-Start-Note" class="headerlink" title="Lesson 14 Start Note"></a>Lesson 14 Start Note</h2><p>状态：进行中。</p>
+<p>主题：开源视频生成项目源码阅读。案例项目为 CogVideo &#x2F; CogVideoX。</p>
+<p>本地文件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\codex_workspace\schedule\lessons\day14_open_source_reading</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/cef494bd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1676,177 +2179,6 @@
 <h3 id="为什么注意力分数是-N-N-？"><a href="#为什么注意力分数是-N-N-？" class="headerlink" title="为什么注意力分数是 [N,N]？"></a>为什么注意力分数是 <code>[N,N]</code>？</h3><p>因为每个 token 都要和所有 token 比较相关程度。</p>
 <h3 id="为什么位置编码必要？"><a href="#为什么位置编码必要？" class="headerlink" title="为什么位置编码必要？"></a>为什么位置编码必要？</h3><p>相同或相似内容的 token 可能出现在不同位置或不同帧。模型需要知道空间位置和时间顺序。</p>
 <h2 id="一分钟复述"><a href="#一分钟复述" class="headerlink" title="一分钟复述"></a>一分钟复述</h2><p>Transformer 将输入拆成 token 序列 <code>[B,N,D]</code>。每个 token 生成 Query、Key 和 Value。模型通过 <code>QK^T</code> 计算两两相关程度，缩放并 softmax 得到权重，再按权重汇总 Value。多头注意力让模型同时学习多种关系，位置编码让模型知道 token 的空间位置和时间顺序。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://mekatoru.github.io/posts/34a0826b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="御陵美影">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小空间">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 小空间">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/34a0826b/" class="post-title-link" itemprop="url">Lesson 6：ODE 推理学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2026-06-17 01:16:00 / 修改时间：09:48:17" itemprop="dateCreated datePublished" datetime="2026-06-17T01:16:00+08:00">2026-06-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">视频生成</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day06_ode_sampling/STUDY_NOTES.md</code></p>
-</blockquote>
-<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>理解 Flow Matching 模型与 ODE 求解器的分工，并比较 Euler 采样步数对质量和耗时的影响。</p>
-<h2 id="Flow-Matching-模型与-ODE-求解器"><a href="#Flow-Matching-模型与-ODE-求解器" class="headerlink" title="Flow Matching 模型与 ODE 求解器"></a>Flow Matching 模型与 ODE 求解器</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Flow Matching：</span><br><span class="line">训练模型学习速度场 v(x_t, t)。</span><br><span class="line"></span><br><span class="line">ODE 求解器：</span><br><span class="line">推理时反复查询速度，并更新 x_t。</span><br></pre></td></tr></table></figure>
-
-<p>ODE 求解器不负责训练模型参数。</p>
-<h2 id="ODE"><a href="#ODE" class="headerlink" title="ODE"></a>ODE</h2><p>ODE 全称：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ordinary Differential Equation</span><br><span class="line">常微分方程</span><br></pre></td></tr></table></figure>
-
-<p>Flow Matching 学到：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dx / dt = v(x, t)</span><br></pre></td></tr></table></figure>
-
-<p>含义：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">已知当前位置和当前时间</span><br><span class="line">模型预测局部变化速度</span><br><span class="line">求解器据此推算未来位置</span><br></pre></td></tr></table></figure>
-
-<h2 id="Euler-求解器"><a href="#Euler-求解器" class="headerlink" title="Euler 求解器"></a>Euler 求解器</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_(t + dt) = x_t + dt * v(x_t, t)</span><br></pre></td></tr></table></figure>
-
-<p>其中：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dt = 1 / sample_steps</span><br></pre></td></tr></table></figure>
-
-<p>同一次固定步数采样中，<code>dt</code> 保持不变。</p>
-<p>例如：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">5 步：  dt = 0.2，每一步都走 0.2。</span><br><span class="line">20 步： dt = 0.05，每一步都走 0.05。</span><br><span class="line">100 步：dt = 0.01，每一步都走 0.01。</span><br></pre></td></tr></table></figure>
-
-<h2 id="实验指标"><a href="#实验指标" class="headerlink" title="实验指标"></a>实验指标</h2><p>目标是半径约为 <code>2</code> 的圆环。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">radius = sqrt(x^2 + y^2)</span><br><span class="line">radial_error = mean(abs(radius - 2))</span><br></pre></td></tr></table></figure>
-
-<p>误差越小，点云越接近目标圆环。</p>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><table>
-<thead>
-<tr>
-<th align="right">Euler 步数</th>
-<th align="right"><code>dt</code></th>
-<th align="right">径向误差</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="right">5</td>
-<td align="right"><code>0.20</code></td>
-<td align="right"><code>0.1183</code></td>
-</tr>
-<tr>
-<td align="right">10</td>
-<td align="right"><code>0.10</code></td>
-<td align="right"><code>0.0962</code></td>
-</tr>
-<tr>
-<td align="right">20</td>
-<td align="right"><code>0.05</code></td>
-<td align="right"><code>0.0937</code></td>
-</tr>
-<tr>
-<td align="right">50</td>
-<td align="right"><code>0.02</code></td>
-<td align="right"><code>0.0940</code></td>
-</tr>
-<tr>
-<td align="right">100</td>
-<td align="right"><code>0.01</code></td>
-<td align="right"><code>0.0943</code></td>
-</tr>
-</tbody></table>
-<h2 id="为什么增加步数后收益变小？"><a href="#为什么增加步数后收益变小？" class="headerlink" title="为什么增加步数后收益变小？"></a>为什么增加步数后收益变小？</h2><p>总误差包含：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">求解器数值误差</span><br><span class="line">+</span><br><span class="line">模型速度预测误差</span><br><span class="line">+</span><br><span class="line">有限随机样本造成的统计波动</span><br></pre></td></tr></table></figure>
-
-<p>增加步数可以减少 Euler 数值误差，但不能修复模型误差。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5 -&gt; 20 步：</span><br><span class="line">单步明显变小，求解误差明显下降。</span><br><span class="line"></span><br><span class="line">50 -&gt; 100 步：</span><br><span class="line">求解误差已经较小，模型误差成为主要限制，收益有限。</span><br></pre></td></tr></table></figure>
-
-<h2 id="控制变量"><a href="#控制变量" class="headerlink" title="控制变量"></a>控制变量</h2><p>比较采样步数时固定：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">同一模型</span><br><span class="line">同一 checkpoint</span><br><span class="line">同一份初始噪声</span><br><span class="line">同一样本数量</span><br><span class="line">同一求解器</span><br></pre></td></tr></table></figure>
-
-<p>只改变：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample_steps</span><br></pre></td></tr></table></figure>
-
-<h2 id="GPU-计时"><a href="#GPU-计时" class="headerlink" title="GPU 计时"></a>GPU 计时</h2><p>GPU 运算通常异步，因此计时前后应调用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.cuda.synchronize()</span><br></pre></td></tr></table></figure>
-
-<p>第一次推理还可能包含：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CUDA 上下文初始化</span><br><span class="line">内核加载</span><br><span class="line">缓存建立</span><br><span class="line">显存分配</span><br></pre></td></tr></table></figure>
-
-<p>严谨测试应先预热，再重复测量。</p>
-<h2 id="关键问答"><a href="#关键问答" class="headerlink" title="关键问答"></a>关键问答</h2><h3 id="dt-是否会在一次-Euler-采样中逐渐变小？"><a href="#dt-是否会在一次-Euler-采样中逐渐变小？" class="headerlink" title="dt 是否会在一次 Euler 采样中逐渐变小？"></a><code>dt</code> 是否会在一次 Euler 采样中逐渐变小？</h3><p>当前基础实现不会。一次实验中：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dt = 1 / sample_steps</span><br></pre></td></tr></table></figure>
-
-<p>始终固定。</p>
-<h3 id="步数越多是否一定越好？"><a href="#步数越多是否一定越好？" class="headerlink" title="步数越多是否一定越好？"></a>步数越多是否一定越好？</h3><p>不一定。步数增加会提高计算成本，超过一定程度后质量提升很小。</p>
-<h3 id="Flow-Matching-模型会直接输出完整视频吗？"><a href="#Flow-Matching-模型会直接输出完整视频吗？" class="headerlink" title="Flow Matching 模型会直接输出完整视频吗？"></a>Flow Matching 模型会直接输出完整视频吗？</h3><p>不会。模型每一步只预测速度。ODE 求解器多次调用模型，得到最终 latent；如果工作在 latent 空间，再由 VAE Decoder 解码为视频。</p>
-<h2 id="一分钟复述"><a href="#一分钟复述" class="headerlink" title="一分钟复述"></a>一分钟复述</h2><p>Flow Matching 训练模型学习速度场，ODE 求解器在推理时使用速度场逐步更新样本。Euler 方法用局部直线近似轨迹。增加采样步数通常能降低求解误差，但会增加模型调用次数。当求解误差已经足够小时，模型误差成为主要限制，继续增加步数收益有限。</p>
 
       
     </div>
