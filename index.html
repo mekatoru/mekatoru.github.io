@@ -246,9 +246,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:10:00 / 修改时间：14:49:52" itemprop="dateCreated datePublished" datetime="2026-06-17T01:10:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:10:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:10:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -291,7 +297,7 @@
 <li><a href="/posts/b3df2689/">Lesson 11：Controlled Tiny Video DiT</a></li>
 <li><a href="/posts/2ad67733/">Lesson 12：Training Engineering</a></li>
 <li><a href="/posts/5dd147a5/">Lesson 13：Multi-GPU Training And Memory Analysis</a></li>
-<li><a href="/posts/c3b5d206/">Lesson 14：开源视频生成项目阅读</a></li>
+<li><a href="/posts/c3b5d206/">Lesson 14：Open Source Repo Reading</a></li>
 </ul>
           <!--noindex-->
             <div class="post-button">
@@ -423,7 +429,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/posts/c3b5d206/" class="post-title-link" itemprop="url">Lesson 14：开源视频生成项目阅读</a>
+          <a href="/posts/c3b5d206/" class="post-title-link" itemprop="url">Lesson 14 Study Notes: Open Source Repo Reading</a>
         </h2>
 
         <div class="post-meta-container">
@@ -433,9 +439,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:24:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:24:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:24:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:24:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -462,19 +474,170 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day14_open_source_reading/README.md</code>, <code>day14_open_source_reading/COGVIDEO_MAP.md</code>, <code>day14_open_source_reading/REPO_READING_TEMPLATE.md</code></p>
+<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day14_open_source_reading/STUDY_NOTES.md</code></p>
 </blockquote>
-<p>这节课当前还没有单独的 <code>STUDY_NOTES.md</code>，所以先把 README、CogVideo 阅读地图和 repo 阅读模板整理成一篇学习笔记。</p>
-<p>本节课从我们自己写的小模型，过渡到真实开源视频生成项目。</p>
-<p>案例项目：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/c3b5d206/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>前面我们自己写了 Tiny VAE、DDPM、Flow Matching、Image DiT、Video DiT、CFG、多卡训练脚本。</p>
+<p>Lesson 14 开始做一件新事情：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">拿到真实开源视频生成 repo 后，知道应该从哪里读。</span><br></pre></td></tr></table></figure>
+
+<p>第一遍读源码，不追求每一行都懂，而是先拆地图。</p>
+<h2 id="第一遍读-repo-的目标"><a href="#第一遍读-repo-的目标" class="headerlink" title="第一遍读 repo 的目标"></a>第一遍读 repo 的目标</h2><p>第一遍只回答：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">入口在哪里？</span><br><span class="line">数据往哪里走？</span><br><span class="line">模型在哪里？</span><br><span class="line">输出在哪里？</span><br></pre></td></tr></table></figure>
+
+<p>不要一开始就逐行读所有 Python 文件。</p>
+<p>推荐顺序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">README</span><br><span class="line">-&gt; inference 入口</span><br><span class="line">-&gt; train / finetune 入口</span><br><span class="line">-&gt; dataset / dataloader</span><br><span class="line">-&gt; model / transformer</span><br><span class="line">-&gt; VAE</span><br><span class="line">-&gt; scheduler</span><br><span class="line">-&gt; config</span><br><span class="line">-&gt; tools</span><br></pre></td></tr></table></figure>
+
+<h2 id="目录怎么判断"><a href="#目录怎么判断" class="headerlink" title="目录怎么判断"></a>目录怎么判断</h2><p>如果只想用 prompt 生成视频：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先看 inference/</span><br></pre></td></tr></table></figure>
+
+<p>如果想用自己的数据继续训练或微调：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先看 finetune/ 或 train/</span><br></pre></td></tr></table></figure>
+
+<p>如果想知道数据应该长什么样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先找 dataset / dataloader</span><br></pre></td></tr></table></figure>
+
+<p>如果想找模型主体：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先搜 model / transformer / DiT / attention / block</span><br></pre></td></tr></table></figure>
+
+<p>如果想找训练 loss：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先搜 loss / mse_loss / target / prediction / noise / velocity / backward</span><br></pre></td></tr></table></figure>
+
+<h2 id="Caption-和-Video-的不同路线"><a href="#Caption-和-Video-的不同路线" class="headerlink" title="Caption 和 Video 的不同路线"></a>Caption 和 Video 的不同路线</h2><p>caption 是字符串，神经网络不能直接吃字符串。</p>
+<p>所以 caption 路线是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">caption string</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; token ids</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text embeddings</span><br></pre></td></tr></table></figure>
+
+<p>video 已经是连续数值张量，所以不需要 tokenizer。</p>
+<p>但 video 仍然不是 DiT 最适合直接处理的形式。真实视频生成项目里通常会先经过 VAE：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raw video</span><br><span class="line">-&gt; VAE Encoder</span><br><span class="line">-&gt; latent video</span><br><span class="line">-&gt; DiT patchify</span><br><span class="line">-&gt; latent tokens</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">video 不用 tokenizer，是因为它已经是数值张量；</span><br><span class="line">但它仍然需要 VAE encoder 和 patchify，才能变成 DiT 适合处理的 latent tokens。</span><br></pre></td></tr></table></figure>
+
+<h2 id="训练路径"><a href="#训练路径" class="headerlink" title="训练路径"></a>训练路径</h2><p>真实 text-to-video latent diffusion &#x2F; flow matching 训练通常可以抽象成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">videos</span><br><span class="line">-&gt; VAE Encoder</span><br><span class="line">-&gt; x_1 latent</span><br><span class="line"></span><br><span class="line">captions</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text_condition</span><br><span class="line"></span><br><span class="line">x_0 noise + t + x_1 latent</span><br><span class="line">-&gt; x_t</span><br><span class="line"></span><br><span class="line">x_t + t + text_condition</span><br><span class="line">-&gt; DiT / Transformer</span><br><span class="line">-&gt; predicted noise 或 predicted velocity</span><br><span class="line">-&gt; loss</span><br></pre></td></tr></table></figure>
+
+<p>所以训练时 VAE 常用的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Encoder</span><br></pre></td></tr></table></figure>
+
+<p>有时也会用 decoder 做重建检查，但训练 DiT 的主路径通常需要 encoder 得到 latents。</p>
+<h2 id="推理路径"><a href="#推理路径" class="headerlink" title="推理路径"></a>推理路径</h2><p>纯 text-to-video 推理没有真实 video 输入。</p>
+<p>起点 latent 通常来自：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">随机噪声</span><br></pre></td></tr></table></figure>
+
+<p>推理路径：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text_condition</span><br><span class="line"></span><br><span class="line">random latent noise</span><br><span class="line">-&gt; DiT / denoiser + scheduler 多步更新</span><br><span class="line">-&gt; generated latent</span><br><span class="line">-&gt; VAE Decoder</span><br><span class="line">-&gt; video</span><br></pre></td></tr></table></figure>
+
+<p>所以推理时 VAE 必用的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Decoder</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pipeline-是什么"><a href="#Pipeline-是什么" class="headerlink" title="Pipeline 是什么"></a>Pipeline 是什么</h2><p>Diffusers 里的 <code>Pipeline</code> 不只是一个模型。</p>
+<p>它通常封装：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tokenizer</span><br><span class="line">text encoder</span><br><span class="line">VAE</span><br><span class="line">Transformer / DiT / denoiser</span><br><span class="line">scheduler</span><br><span class="line">CFG 逻辑</span><br><span class="line">latent 初始化</span><br><span class="line">VAE decode</span><br><span class="line">视频后处理和保存</span><br></pre></td></tr></table></figure>
+
+<p>所以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video = pipe(prompt=...)</span><br></pre></td></tr></table></figure>
+
+<p>看起来是一行，里面其实跑完整条推理链。</p>
+<h2 id="常见推理参数"><a href="#常见推理参数" class="headerlink" title="常见推理参数"></a>常见推理参数</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale</span><br></pre></td></tr></table></figure>
+
+<p>表示 CFG 强度，也就是 prompt &#x2F; condition 被强调的程度。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_inference_steps</span><br></pre></td></tr></table></figure>
+
+<p>表示采样 &#x2F; 去噪 &#x2F; ODE 更新步数。</p>
+<p>直觉：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale 太低：可能不太听 prompt</span><br><span class="line">guidance_scale 太高：可能画面变怪</span><br><span class="line">steps 太少：粗糙</span><br><span class="line">steps 更多：通常更好但更慢，到一定程度收益变小</span><br></pre></td></tr></table></figure>
+
+<h2 id="Scheduler-And-Transformer"><a href="#Scheduler-And-Transformer" class="headerlink" title="Scheduler And Transformer"></a>Scheduler And Transformer</h2><p>推理循环里，Transformer &#x2F; DiT 和 scheduler 的分工不同。</p>
+<p>Transformer &#x2F; DiT 负责：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据当前 latent、timestep 和 text embeddings，预测 noise / velocity / model_pred。</span><br></pre></td></tr></table></figure>
+
+<p>Scheduler 负责：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置 timesteps，并根据模型预测结果更新 latent。</span><br></pre></td></tr></table></figure>
+
+<p>抽象代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> scheduler.timesteps:</span><br><span class="line">    model_pred = transformer(latents, t, text_embeddings)</span><br><span class="line">    latents = scheduler.step(model_pred, t, latents)</span><br></pre></td></tr></table></figure>
+
+<p>所以不是 Transformer 直接生成更新后的 latent，而是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Transformer 给方向；</span><br><span class="line">Scheduler 真的走一步。</span><br></pre></td></tr></table></figure>
+
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_inference_steps = 50</span><br></pre></td></tr></table></figure>
+
+<p>不开 CFG 时，Transformer &#x2F; denoiser 通常大约 forward 50 次。</p>
+<p>如果 CFG 分开算：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uncond prediction</span><br><span class="line">cond prediction</span><br></pre></td></tr></table></figure>
+
+<p>那么 50 steps 大约是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">50 * 2 = 100 次 forward</span><br></pre></td></tr></table></figure>
+
+<p>很多框架会把 cond&#x2F;uncond 拼到 batch 维度里一次算完，但计算量仍然接近两份。</p>
+<h2 id="CFG-数字例子"><a href="#CFG-数字例子" class="headerlink" title="CFG 数字例子"></a>CFG 数字例子</h2><p>CFG 公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final_pred = uncond_pred</span><br><span class="line">           + guidance_scale * (cond_pred - uncond_pred)</span><br></pre></td></tr></table></figure>
+
+<p>假设某一步里：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uncond_pred = 10</span><br><span class="line">cond_pred = 14</span><br></pre></td></tr></table></figure>
+
+<p>差值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cond_pred - uncond_pred = 4</span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>4</code> 可以理解成 prompt 带来的额外方向。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 0</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 0 * 4 = 10</span><br></pre></td></tr></table></figure>
+
+<p>含义：无条件生成。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 1</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 1 * 4 = 14</span><br></pre></td></tr></table></figure>
+
+<p>含义：普通有条件生成。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 2</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 2 * 4 = 18</span><br></pre></td></tr></table></figure>
+
+<p>含义：更强调 prompt 条件。</p>
+<p>如果 guidance scale 太大，可能导致：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">画面变怪</span><br><span class="line">过饱和</span><br><span class="line">动作僵硬</span><br><span class="line">细节崩</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uncond_pred 是基础生成方向；</span><br><span class="line">cond_pred - uncond_pred 是 prompt 带来的方向修正；</span><br><span class="line">guidance_scale 是把这个修正放大多少。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pipeline-搜索词地图"><a href="#Pipeline-搜索词地图" class="headerlink" title="Pipeline 搜索词地图"></a>Pipeline 搜索词地图</h2><p>读 <code>pipeline_xxx.py</code> 时，可以用这些关键词快速定位。</p>
+<p>找 prompt embeddings：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">encode_prompt</span><br><span class="line">prompt_embeds</span><br><span class="line">negative_prompt_embeds</span><br><span class="line">text_encoder</span><br><span class="line">tokenizer</span><br><span class="line">input_ids</span><br></pre></td></tr></table></figure>
+
+<p>找 random latent：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prepare_latents</span><br><span class="line">latents</span><br><span class="line">torch.randn</span><br><span class="line">randn_tensor</span><br><span class="line">noise</span><br><span class="line">latent_shape</span><br></pre></td></tr></table></figure>
+
+<p>找 scheduler 更新：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scheduler</span><br><span class="line">set_timesteps</span><br><span class="line">timesteps</span><br><span class="line">scheduler.step</span><br><span class="line">model_pred</span><br><span class="line">noise_pred</span><br></pre></td></tr></table></figure>
+
+<p>找 VAE decode：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vae.decode</span><br><span class="line">decode_latents</span><br><span class="line">decode</span><br><span class="line">postprocess</span><br><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<p>判断是不是 text-to-video pipeline，可以看是否同时出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">tokenizer</span><br><span class="line">text_encoder</span><br><span class="line">latents</span><br><span class="line">num_frames</span><br><span class="line">transformer</span><br><span class="line">scheduler.step</span><br><span class="line">vae.decode</span><br><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<h2 id="本节关键结论"><a href="#本节关键结论" class="headerlink" title="本节关键结论"></a>本节关键结论</h2><ol>
+<li>只想生成视频，先看 <code>inference/</code>。</li>
+<li>想微调，先看 <code>finetune/</code> 或 <code>train/</code>。</li>
+<li>caption 要先 tokenizer，再 text encoder。</li>
+<li>video 不用 tokenizer，但要 VAE encode 和 patchify。</li>
+<li>真实项目里 DiT 通常吃 latent tokens，不直接吃 raw video。</li>
+<li>推理时起点 latent 通常是随机噪声。</li>
+<li>Pipeline 是一整套推理流程封装，不只是裸模型。</li>
+<li>第一遍读 repo 的目标是看清入口、数据流、模型位置和输出位置。</li>
+<li>Transformer &#x2F; DiT 预测方向，scheduler 负责更新 latent。</li>
+<li>CFG 是放大 <code>cond_pred - uncond_pred</code> 这部分条件修正。</li>
+</ol>
+
       
     </div>
 
@@ -528,9 +691,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:23:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:23:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:23:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:23:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -559,15 +728,129 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day13_multi_gpu/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/5dd147a5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>Lesson 13 关注多卡训练的基础概念：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DDP</span><br><span class="line">world_size</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">global batch</span><br><span class="line">gradient synchronization</span><br><span class="line">no_sync</span><br><span class="line">training memory</span><br><span class="line">video attention cost</span><br></pre></td></tr></table></figure>
+
+<h2 id="DDP-是什么"><a href="#DDP-是什么" class="headerlink" title="DDP 是什么"></a>DDP 是什么</h2><p>DDP 全称：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DistributedDataParallel</span><br></pre></td></tr></table></figure>
+
+<p>中文：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分布式数据并行</span><br></pre></td></tr></table></figure>
+
+<p>它做的事情：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">多张 GPU 各自处理不同数据</span><br><span class="line">每张 GPU 上有一份完整模型</span><br><span class="line">每张 GPU 各自 forward / backward</span><br><span class="line">backward 后同步梯度</span><br><span class="line">每张 GPU 用同步后的梯度更新参数</span><br><span class="line">最后所有 GPU 上的模型参数保持一致</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DDP = 多张卡各算各的数据，然后同步梯度，一起更新同一套模型。</span><br></pre></td></tr></table></figure>
+
+<h2 id="DDP-不是什么"><a href="#DDP-不是什么" class="headerlink" title="DDP 不是什么"></a>DDP 不是什么</h2><p>普通 DDP 不是把一个模型切成几块分别放到多张卡上。</p>
+<p>所以如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型本体单张 GPU 放不下</span><br></pre></td></tr></table></figure>
+
+<p>普通 DDP 不能直接解决。</p>
+<p>因为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每张 GPU 都要放完整模型</span><br></pre></td></tr></table></figure>
+
+<p>这种情况需要更复杂的方法，例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FSDP</span><br><span class="line">ZeRO</span><br><span class="line">Tensor Parallel</span><br><span class="line">Pipeline Parallel</span><br></pre></td></tr></table></figure>
+
+<h2 id="world-size"><a href="#world-size" class="headerlink" title="world_size"></a>world_size</h2><p><code>world_size</code> 是参与分布式训练的总进程数。</p>
+<p>在单机多卡 DDP 里，通常可以近似理解为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 使用的 GPU 数量</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1,2</span><br><span class="line">torchrun --nproc_per_node=2 ...</span><br></pre></td></tr></table></figure>
+
+<p>这里：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 2</span><br></pre></td></tr></table></figure>
+
+<p>如果是多机多卡：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 台机器，每台 4 张 GPU</span><br></pre></td></tr></table></figure>
+
+<p>那么通常：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">world_size = 8</span><br></pre></td></tr></table></figure>
+
+<h2 id="Global-Batch-Size"><a href="#Global-Batch-Size" class="headerlink" title="Global Batch Size"></a>Global Batch Size</h2><p>公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">global_batch_size =</span><br><span class="line">    micro_batch_size</span><br><span class="line">    * world_size</span><br><span class="line">    * gradient_accumulation_steps</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">micro_batch_size = 2</span><br><span class="line">world_size = 8</span><br><span class="line">gradient_accumulation_steps = 4</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">global_batch_size = 2 * 8 * 4 = 64</span><br></pre></td></tr></table></figure>
+
+<p>含义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一次 optimizer.step() 前，全局一共看过 64 个样本。</span><br></pre></td></tr></table></figure>
+
+<p>单张卡只看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 * 4 = 8 个样本</span><br></pre></td></tr></table></figure>
+
+<p>8 张卡合起来看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">64 个样本</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么多卡不一定线性加速"><a href="#为什么多卡不一定线性加速" class="headerlink" title="为什么多卡不一定线性加速"></a>为什么多卡不一定线性加速</h2><p>理想情况：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 张卡 = 1x</span><br><span class="line">2 张卡 = 2x</span><br><span class="line">4 张卡 = 4x</span><br></pre></td></tr></table></figure>
+
+<p>真实情况通常达不到完美线性加速，原因包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">梯度同步有通信开销</span><br><span class="line">快的 GPU 要等慢的 GPU</span><br><span class="line">数据加载太慢，GPU 在等数据</span><br><span class="line">单卡 batch 太小，GPU 没吃满</span><br></pre></td></tr></table></figure>
+
+<p>这里的通信开销主要是时间和带宽开销，不是“显存开销”。</p>
+<h2 id="no-sync"><a href="#no-sync" class="headerlink" title="no_sync"></a>no_sync</h2><p>DDP 默认每次 backward 都同步梯度。</p>
+<p>但梯度累积时，前几次 backward 还不会 <code>optimizer.step()</code>，所以不一定要每次同步。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradient_accumulation_steps = 4</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第 1 次 backward：可以 no_sync</span><br><span class="line">第 2 次 backward：可以 no_sync</span><br><span class="line">第 3 次 backward：可以 no_sync</span><br><span class="line">第 4 次 backward：需要同步梯度</span><br><span class="line">然后 optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">减少梯度同步通信次数</span><br><span class="line">降低多卡训练通信开销</span><br></pre></td></tr></table></figure>
+
+<h2 id="训练显存包括什么"><a href="#训练显存包括什么" class="headerlink" title="训练显存包括什么"></a>训练显存包括什么</h2><p>训练显存不是只由模型参数决定。</p>
+<p>通常包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">模型参数</span><br><span class="line">梯度</span><br><span class="line">优化器状态</span><br><span class="line">激活值 activations</span><br><span class="line">输入数据 batch</span><br><span class="line">临时计算 buffer</span><br></pre></td></tr></table></figure>
+
+<p>激活值是前向传播过程中的中间结果。</p>
+<p>训练时要保存一部分激活值，因为反向传播需要它们来计算梯度。</p>
+<p>所以：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">训练显存通常大于推理显存</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么视频模型更吃显存"><a href="#为什么视频模型更吃显存" class="headerlink" title="为什么视频模型更吃显存"></a>为什么视频模型更吃显存</h2><p>图片张量通常是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, C, H, W]</span><br></pre></td></tr></table></figure>
+
+<p>视频张量是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, C, T, H, W]</span><br></pre></td></tr></table></figure>
+
+<p>视频多了时间维度 <code>T</code>。</p>
+<p>图片 token 数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N_image = (H / p_h) * (W / p_w)</span><br></pre></td></tr></table></figure>
+
+<p>视频 token 数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N_video = (T / p_t) * (H / p_h) * (W / p_w)</span><br></pre></td></tr></table></figure>
+
+<p>attention 矩阵大小是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N * N</span><br></pre></td></tr></table></figure>
+
+<p>所以 token 数增长后，attention 显存和计算量会平方增长。</p>
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">N = 256  -&gt; attention = 256 * 256 = 65,536</span><br><span class="line">N = 1024 -&gt; attention = 1024 * 1024 = 1,048,576</span><br></pre></td></tr></table></figure>
+
+<p>倍数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,048,576 / 65,536 = 16</span><br></pre></td></tr></table></figure>
+
+<p>也就是 token 数变成 4 倍，attention 矩阵变成 16 倍。</p>
+<h2 id="本节关键结论"><a href="#本节关键结论" class="headerlink" title="本节关键结论"></a>本节关键结论</h2><ol>
+<li>DDP 是分布式数据并行。</li>
+<li>普通 DDP 每张卡都有一份完整模型。</li>
+<li>DDP 主要提升吞吐量，不直接解决模型单卡放不下。</li>
+<li><code>world_size</code> 是总训练进程数，单机多卡时通常等于 GPU 数。</li>
+<li><code>global_batch_size = micro_batch_size * world_size * accumulation_steps</code>。</li>
+<li>多卡训练有梯度同步通信开销，所以不一定线性加速。</li>
+<li><code>no_sync</code> 可以减少梯度累积时的同步次数。</li>
+<li>训练显存包括参数、梯度、优化器状态、激活值、输入和临时 buffer。</li>
+<li>视频模型因为多了时间维度，token 和 attention 成本显著增加。</li>
+</ol>
+
       
     </div>
 
@@ -621,9 +904,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:22:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:22:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:22:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:22:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -652,15 +941,109 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day12_training_engineering/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/2ad67733/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>真实训练大模型时，难点不只是模型结构，还包括：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">显存不够</span><br><span class="line">训练很慢</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">训练中断</span><br><span class="line">实验结果难追踪</span><br></pre></td></tr></table></figure>
+
+<p>Lesson 12 主要学习：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">micro batch</span><br><span class="line">gradient accumulation</span><br><span class="line">effective batch</span><br><span class="line">mixed precision</span><br><span class="line">autocast</span><br><span class="line">GradScaler</span><br><span class="line">checkpoint</span><br><span class="line">resume</span><br><span class="line">logging</span><br></pre></td></tr></table></figure>
+
+<h2 id="Micro-Batch-And-Effective-Batch"><a href="#Micro-Batch-And-Effective-Batch" class="headerlink" title="Micro Batch And Effective Batch"></a>Micro Batch And Effective Batch</h2><p><code>micro_batch_size</code> 是显存一次真正放进去的小 batch。</p>
+<p><code>effective_batch_size</code> 是一次参数更新前，模型实际累计看过的样本数。</p>
+<p>公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">effective_batch_size = micro_batch_size * gradient_accumulation_steps</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">micro_batch_size = 2</span><br><span class="line">gradient_accumulation_steps = 4</span><br><span class="line">effective_batch_size = 8</span><br></pre></td></tr></table></figure>
+
+<p>意思是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">显存一次只吃 2 个样本</span><br><span class="line">但 optimizer.step() 前总共累计了 8 个样本的梯度</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gradient-Accumulation"><a href="#Gradient-Accumulation" class="headerlink" title="Gradient Accumulation"></a>Gradient Accumulation</h2><p>普通训练：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">forward</span><br><span class="line">loss.backward()</span><br><span class="line">optimizer.step()</span><br><span class="line">optimizer.zero_grad()</span><br></pre></td></tr></table></figure>
+
+<p>梯度累积：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">micro batch 1 -&gt; loss.backward()</span><br><span class="line">micro batch 2 -&gt; loss.backward()</span><br><span class="line">micro batch 3 -&gt; loss.backward()</span><br><span class="line">micro batch 4 -&gt; loss.backward()</span><br><span class="line"></span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<p>标准说法：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 次 backward 后，执行 1 次 optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<p>不要说成 4 次 <code>optimizer.step()</code>。</p>
+<h2 id="为什么-loss-要除以-accumulation-steps"><a href="#为什么-loss-要除以-accumulation-steps" class="headerlink" title="为什么 loss 要除以 accumulation steps"></a>为什么 loss 要除以 accumulation steps</h2><p>PyTorch 的 <code>F.mse_loss</code> 默认会对当前 batch 求平均。</p>
+<p>如果每个 micro batch 的 <code>raw_loss</code> 都约等于 <code>1.0</code>，累积 5 次：</p>
+<p>不除以 5：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.0 + 1.0 + 1.0 + 1.0 + 1.0 = 5.0</span><br></pre></td></tr></table></figure>
+
+<p>梯度大约变成 5 倍。</p>
+<p>除以 5：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.2 + 0.2 + 0.2 + 0.2 + 0.2 = 1.0</span><br></pre></td></tr></table></figure>
+
+<p>这样才接近真正大 batch 的平均 loss。</p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">raw_loss = F.mse_loss(prediction, y)</span><br><span class="line">loss = raw_loss / gradient_accumulation_steps</span><br><span class="line">loss.backward()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mixed-Precision"><a href="#Mixed-Precision" class="headerlink" title="Mixed Precision"></a>Mixed Precision</h2><p>混合精度主要解决：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">减少显存</span><br><span class="line">提高训练速度</span><br></pre></td></tr></table></figure>
+
+<p>常见精度：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fp32  = float32，稳定但显存更大</span><br><span class="line">fp16  = float16，更省显存更快，但数值范围小</span><br><span class="line">bf16  = bfloat16，范围更接近 fp32，通常比 fp16 更稳</span><br></pre></td></tr></table></figure>
+
+<h2 id="Autocast"><a href="#Autocast" class="headerlink" title="Autocast"></a>Autocast</h2><p><code>autocast</code> 是自动混合精度区域。</p>
+<p>它不是永久把模型参数改成 fp16，而是在指定代码块里自动选择合适精度做计算。</p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.autocast(device_type=device.<span class="built_in">type</span>, enabled=<span class="literal">True</span>, dtype=torch.float16):</span><br><span class="line">    prediction = model(x)</span><br><span class="line">    loss = loss_fn(prediction, y)</span><br></pre></td></tr></table></figure>
+
+<p>直觉：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">适合低精度的计算用 fp16 / bf16</span><br><span class="line">需要更稳的地方保留更安全的精度</span><br></pre></td></tr></table></figure>
+
+<h2 id="GradScaler"><a href="#GradScaler" class="headerlink" title="GradScaler"></a>GradScaler</h2><p><code>GradScaler</code> 主要用于 CUDA fp16 训练。</p>
+<p>fp16 的数值范围更小，太小的梯度可能下溢成 0。<code>GradScaler</code> 会：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">先把 loss 放大</span><br><span class="line">再 backward</span><br><span class="line">optimizer 更新前检查梯度</span><br><span class="line">如果正常，就 step</span><br><span class="line">如果溢出，就跳过这次更新</span><br><span class="line">最后自动调整缩放倍数</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scaler.scale(loss).backward()</span><br><span class="line">scaler.step(optimizer)</span><br><span class="line">scaler.update()</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">autocast 负责自动选择计算精度；</span><br><span class="line">GradScaler 负责保护 fp16 反向传播的数值稳定性。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Checkpoint"><a href="#Checkpoint" class="headerlink" title="Checkpoint"></a>Checkpoint</h2><p>完整 checkpoint 不应该只保存模型参数。</p>
+<p>推荐保存：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">model</span><br><span class="line">optimizer</span><br><span class="line">scaler</span><br><span class="line">update_step</span><br><span class="line">args</span><br><span class="line">python_random_state</span><br><span class="line">torch_random_state</span><br><span class="line">cuda_random_state</span><br></pre></td></tr></table></figure>
+
+<p>含义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model：模型参数</span><br><span class="line">optimizer：优化器状态，例如 AdamW 的动量和内部缓存</span><br><span class="line">scaler：fp16 的动态缩放状态</span><br><span class="line">update_step：已经完成到第几次参数更新</span><br><span class="line">args：训练配置</span><br><span class="line">random states：随机过程状态，帮助尽量复现和接续训练</span><br></pre></td></tr></table></figure>
+
+<p>只保存 <code>model.state_dict()</code>：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以推理</span><br><span class="line">不能严格恢复训练</span><br></pre></td></tr></table></figure>
+
+<p>因为优化器状态、步数、随机状态等都丢了。</p>
+<h2 id="Resume"><a href="#Resume" class="headerlink" title="Resume"></a>Resume</h2><p>如果 checkpoint 记录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update_step = 200</span><br></pre></td></tr></table></figure>
+
+<p>说明第 200 次参数更新已经完成。</p>
+<p>恢复训练时下一步应该从：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">201</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> update_step <span class="keyword">in</span> <span class="built_in">range</span>(start_update + <span class="number">1</span>, max_updates + <span class="number">1</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<h2 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h2><p>训练时保存 <code>losses.csv</code> 是为了：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">画 loss 曲线</span><br><span class="line">判断是否收敛</span><br><span class="line">比较不同实验</span><br><span class="line">检查训练是否从 checkpoint 正常接上</span><br><span class="line">发现 loss 爆炸、卡住、不下降等异常</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">update_step,mean_loss,effective_batch_size,precision</span><br><span class="line">1,0.48611600,8,fp32</span><br><span class="line">2,0.45401600,8,fp32</span><br><span class="line">3,0.39273100,8,fp32</span><br></pre></td></tr></table></figure>
+
+<h2 id="本节关键结论"><a href="#本节关键结论" class="headerlink" title="本节关键结论"></a>本节关键结论</h2><ol>
+<li>micro batch 是显存一次真正吃进去的 batch。</li>
+<li>effective batch 是一次参数更新前累计看过的样本数。</li>
+<li>梯度累积时，loss 要除以 accumulation steps，避免梯度被放大。</li>
+<li>mixed precision 用来省显存和加速。</li>
+<li>autocast 负责自动混合精度计算。</li>
+<li>GradScaler 负责 fp16 下的数值稳定。</li>
+<li>checkpoint 要保存模型、优化器、scaler、步数、配置和随机状态。</li>
+<li>resume 时从 <code>update_step + 1</code> 开始。</li>
+<li>logs 是训练过程的证据，不要只依赖终端输出。</li>
+</ol>
+
       
     </div>
 
@@ -714,9 +1097,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:21:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:21:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:21:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:21:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -745,15 +1134,110 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day11_controlled_video_dit/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/b3df2689/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>Lesson 10 的模型只会从噪声生成一个短视频，但不能指定方向。</p>
+<p>Lesson 11 在 Video DiT 里加入 <code>condition</code>，让模型可以根据条件生成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">0 = 向右移动</span><br><span class="line">1 = 向左移动</span><br><span class="line">2 = 无条件</span><br></pre></td></tr></table></figure>
+
+<p>所以它从：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model(x_t, t)</span><br></pre></td></tr></table></figure>
+
+<p>变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model(x_t, t, condition)</span><br></pre></td></tr></table></figure>
+
+<p>重点纠正：<code>t</code> 不是 Lesson 11 新增的，Lesson 10 已经有 <code>t</code>。Lesson 11 新增的是 <code>condition</code>。</p>
+<h2 id="数据部分"><a href="#数据部分" class="headerlink" title="数据部分"></a>数据部分</h2><p>训练数据形状：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_1:    [B, 1, 8, 16, 16]</span><br><span class="line">labels: [B]</span><br></pre></td></tr></table></figure>
+
+<p><code>x_1</code> 是真实视频，也就是 Flow Matching 的终点。</p>
+<p><code>x_0</code> 是随机噪声：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_0 = torch.randn_like(x_1)</span><br><span class="line">x_0: [B, 1, 8, 16, 16]</span><br></pre></td></tr></table></figure>
+
+<p><code>t</code> 是每个样本自己的时间：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t: [B]</span><br></pre></td></tr></table></figure>
+
+<p>为了和视频张量逐元素计算，要变成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t_video: [B, 1, 1, 1, 1]</span><br></pre></td></tr></table></figure>
+
+<p>这不是矩阵乘法，而是广播后的逐元素乘法。</p>
+<h2 id="Flow-Matching"><a href="#Flow-Matching" class="headerlink" title="Flow Matching"></a>Flow Matching</h2><p>中间状态：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_t = (1 - t) * x_0 + t * x_1</span><br></pre></td></tr></table></figure>
+
+<p>对 <code>t</code> 求导：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d x_t / d t = x_1 - x_0</span><br></pre></td></tr></table></figure>
+
+<p>所以训练目标是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target_velocity = x_1 - x_0</span><br></pre></td></tr></table></figure>
+
+<p>模型最终预测的是视频速度场：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predicted_velocity: [B, 1, 8, 16, 16]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Condition-Dropout"><a href="#Condition-Dropout" class="headerlink" title="Condition Dropout"></a>Condition Dropout</h2><p>训练时会随机把一部分真实条件替换成 <code>NULL_CONDITION = 2</code>。</p>
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">labels    = [0, 1, 0, 1, 1]</span><br><span class="line">drop_mask = [F, T, F, F, T]</span><br><span class="line">condition = [0, 2, 0, 1, 2]</span><br></pre></td></tr></table></figure>
+
+<p>这样模型同时学会：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">condition = 0 / 1 -&gt; 有条件生成</span><br><span class="line">condition = 2     -&gt; 无条件生成</span><br></pre></td></tr></table></figure>
+
+<p>没有这一步，推理时 CFG 里的 <code>velocity_uncond</code> 就没有可靠来源。</p>
+<h2 id="Condition-Embedding"><a href="#Condition-Embedding" class="headerlink" title="Condition Embedding"></a>Condition Embedding</h2><p>代码核心：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">time_features = <span class="variable language_">self</span>.time_embedding(t)</span><br><span class="line">condition_features = <span class="variable language_">self</span>.condition_embedding(condition)</span><br><span class="line">combined_condition = time_features + condition_features</span><br></pre></td></tr></table></figure>
+
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B = 64</span><br><span class="line">hidden_size = 128</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">time_features      = [64, 128]</span><br><span class="line">condition_features = [64, 128]</span><br><span class="line">combined_condition = [64, 128]</span><br></pre></td></tr></table></figure>
+
+<p><code>combined_condition</code> 会进入每个 DiTBlock，通过 AdaLN 控制 Transformer 的计算。</p>
+<h2 id="Video-Tokens"><a href="#Video-Tokens" class="headerlink" title="Video Tokens"></a>Video Tokens</h2><p>默认配置：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_t = [B, 1, 8, 16, 16]</span><br><span class="line">patch_size = [2, 4, 4]</span><br><span class="line">hidden_size = 64</span><br></pre></td></tr></table></figure>
+
+<p>网格：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid_t = 4</span><br><span class="line">grid_h = 4</span><br><span class="line">grid_w = 4</span><br><span class="line">token_count = 64</span><br></pre></td></tr></table></figure>
+
+<p><code>Conv3d</code> 输出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, 64, 4, 4, 4]</span><br></pre></td></tr></table></figure>
+
+<p>转成 Transformer 输入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, 64, 64]</span><br></pre></td></tr></table></figure>
+
+<p>这两个 <code>64</code> 意义不同：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, token_count, hidden_size]</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>hidden_size = 128</code>：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Conv3d 输出 = [B, 128, 4, 4, 4]</span><br><span class="line">tokens      = [B, 64, 128]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Final-Projection-And-Depatchify"><a href="#Final-Projection-And-Depatchify" class="headerlink" title="Final Projection And Depatchify"></a>Final Projection And Depatchify</h2><p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tokens = [B, 64, 128]</span><br><span class="line">patch_size = [2, 4, 4]</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">patch_dim = 2 * 4 * 4 = 32</span><br><span class="line">patches = [B, 64, 32]</span><br></pre></td></tr></table></figure>
+
+<p><code>depatchify</code> 会把：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, 64, 32]</span><br></pre></td></tr></table></figure>
+
+<p>还原成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[B, 1, 8, 16, 16]</span><br></pre></td></tr></table></figure>
+
+<h2 id="CFG-推理"><a href="#CFG-推理" class="headerlink" title="CFG 推理"></a>CFG 推理</h2><p>CFG 每一步会跑两次模型：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">velocity_uncond = model(x_t, t, null_condition)</span><br><span class="line">velocity_cond   = model(x_t, t, condition)</span><br></pre></td></tr></table></figure>
+
+<p>然后组合：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">velocity = velocity_uncond</span><br><span class="line">         + guidance_scale * (velocity_cond - velocity_uncond)</span><br></pre></td></tr></table></figure>
+
+<p>含义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 0  -&gt; velocity = velocity_uncond，无条件生成</span><br><span class="line">guidance_scale = 1  -&gt; velocity = velocity_cond，纯有条件生成</span><br><span class="line">guidance_scale &gt; 1  -&gt; 加强条件影响</span><br></pre></td></tr></table></figure>
+
+<p>CFG 不是只属于文本 prompt。它是一种“加强条件”的推理方法。条件可以是类别、文本、图片、动作、姿态等。</p>
+<h2 id="本节你已经掌握的点"><a href="#本节你已经掌握的点" class="headerlink" title="本节你已经掌握的点"></a>本节你已经掌握的点</h2><ol>
+<li><code>condition</code> 是 Lesson 11 相比 Lesson 10 新增的输入。</li>
+<li><code>NULL_CONDITION</code> 代表无条件。</li>
+<li>condition dropout 是为了训练无条件能力。</li>
+<li>CFG 推理要分别得到有条件速度和无条件速度。</li>
+<li><code>guidance_scale</code> 控制条件增强强度。</li>
+<li>Video DiT 最终预测的仍然是 Flow Matching 的速度场。</li>
+</ol>
+
       
     </div>
 
@@ -807,9 +1291,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:20:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:20:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:20:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:20:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -838,7 +1328,8 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day10_video_dit/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2>
+<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>将 Image DiT 扩展成 Video DiT，理解时空 patch、Video Transformer token 和视频速度场预测。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/c4d8161f/#more" rel="contents">
@@ -900,9 +1391,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:19:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:19:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:19:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:19:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -931,7 +1428,8 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day09_video_tensor/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2>
+<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>从图片生成过渡到视频生成，理解视频张量、Video VAE 和时空 patch。</p>
+<h2 id="视频张量"><a href="#视频张量" class="headerlink" title="视频张量"></a>视频张量</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/a41f9ffa/#more" rel="contents">
@@ -993,9 +1491,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:18:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:18:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:18:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:18:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1024,7 +1528,8 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day08_image_dit/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2>
+<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>将 Flow Matching 与 Transformer 结合，训练一个 Tiny Image DiT 从噪声生成小图片。</p>
+<h2 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/d318af6c/#more" rel="contents">
@@ -1086,9 +1591,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:17:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:17:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:17:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:17:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1117,7 +1628,8 @@
           <blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day07_self_attention/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2>
+<h2 id="本课目标"><a href="#本课目标" class="headerlink" title="本课目标"></a>本课目标</h2><p>理解 Transformer 如何让 token 互相读取信息，以及 Self-Attention、多头注意力和位置编码的基本机制。</p>
+<h2 id="Token-与输入形状"><a href="#Token-与输入形状" class="headerlink" title="Token 与输入形状"></a>Token 与输入形状</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/43a7b2fd/#more" rel="contents">

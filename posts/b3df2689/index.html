@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mekatoru.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day11_controlled_video_dit&#x2F;STUDY_NOTES.md  这一节解决什么问题">
+    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day11_controlled_video_dit&#x2F;STUDY_NOTES.md  这一节解决什么问题Lesson 10 的模型只会从噪声生成一个短视频，但不能指定方向。 Lesson 11 在 Video DiT 里加入 condi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lesson 11 Study Notes: Controlled Tiny Video DiT">
 <meta property="og:url" content="https://mekatoru.github.io/posts/b3df2689/index.html">
 <meta property="og:site_name" content="小空间">
-<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day11_controlled_video_dit&#x2F;STUDY_NOTES.md  这一节解决什么问题">
+<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day11_controlled_video_dit&#x2F;STUDY_NOTES.md  这一节解决什么问题Lesson 10 的模型只会从噪声生成一个短视频，但不能指定方向。 Lesson 11 在 Video DiT 里加入 condi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-16T17:21:00.000Z">
-<meta property="article:modified_time" content="2026-06-17T06:49:16.406Z">
+<meta property="article:modified_time" content="2026-06-19T09:50:07.335Z">
 <meta property="article:author" content="御陵美影">
 <meta property="article:tag" content="Lesson 11">
 <meta property="article:tag" content="Video DiT">
@@ -253,9 +253,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:21:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:21:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:21:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:21:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,11 +296,9 @@
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day11_controlled_video_dit/STUDY_NOTES.md</code></p>
 </blockquote>
-<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><span id="more"></span>
-
-<p>Lesson 10 的模型只会从噪声生成一个短视频，但不能指定方向。</p>
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>Lesson 10 的模型只会从噪声生成一个短视频，但不能指定方向。</p>
 <p>Lesson 11 在 Video DiT 里加入 <code>condition</code>，让模型可以根据条件生成：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 = 向右移动</span><br><span class="line">1 = 向左移动</span><br><span class="line">2 = 无条件</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">0 = 向右移动</span><br><span class="line">1 = 向左移动</span><br><span class="line">2 = 无条件</span><br></pre></td></tr></table></figure>
 
 <p>所以它从：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model(x_t, t)</span><br></pre></td></tr></table></figure>

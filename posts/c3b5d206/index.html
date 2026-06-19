@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"mekatoru.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;README.md, day14_open_source_reading&#x2F;COGVIDEO_MAP.md, day14_open_source_reading&#x2F;REPO_READING">
+    <meta name="description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;STUDY_NOTES.md  这一节解决什么问题前面我们自己写了 Tiny VAE、DDPM、Flow Matching、Image DiT、Video DiT、CFG、多卡训练脚本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lesson 14：开源视频生成项目阅读">
+<meta property="og:title" content="Lesson 14 Study Notes: Open Source Repo Reading">
 <meta property="og:url" content="https://mekatoru.github.io/posts/c3b5d206/index.html">
 <meta property="og:site_name" content="小空间">
-<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;README.md, day14_open_source_reading&#x2F;COGVIDEO_MAP.md, day14_open_source_reading&#x2F;REPO_READING">
+<meta property="og:description" content="来源：E:\codex_workspace\schedule 中的学习材料。说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。原始文件：day14_open_source_reading&#x2F;STUDY_NOTES.md  这一节解决什么问题前面我们自己写了 Tiny VAE、DDPM、Flow Matching、Image DiT、Video DiT、CFG、多卡训练脚本">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-16T17:24:00.000Z">
-<meta property="article:modified_time" content="2026-06-17T06:49:16.416Z">
+<meta property="article:modified_time" content="2026-06-19T09:50:07.343Z">
 <meta property="article:author" content="御陵美影">
 <meta property="article:tag" content="Lesson 14">
 <meta property="article:tag" content="开源阅读">
@@ -39,10 +39,10 @@
 <link rel="canonical" href="https://mekatoru.github.io/posts/c3b5d206/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mekatoru.github.io/posts/c3b5d206/","path":"posts/c3b5d206/","title":"Lesson 14：开源视频生成项目阅读"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://mekatoru.github.io/posts/c3b5d206/","path":"posts/c3b5d206/","title":"Lesson 14 Study Notes: Open Source Repo Reading"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Lesson 14：开源视频生成项目阅读 | 小空间</title>
+<title>Lesson 14 Study Notes: Open Source Repo Reading | 小空间</title>
   
 
 
@@ -161,7 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Goal"><span class="nav-number">1.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CogVideo-Repo-Structure-Snapshot"><span class="nav-number">2.</span> <span class="nav-text">CogVideo Repo Structure Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reading-Order"><span class="nav-number">3.</span> <span class="nav-text">Reading Order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-We-Are-Looking-For"><span class="nav-number">4.</span> <span class="nav-text">What We Are Looking For</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-To-Previous-Lessons"><span class="nav-number">5.</span> <span class="nav-text">Connection To Previous Lessons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Reading-Rule"><span class="nav-number">6.</span> <span class="nav-text">First Reading Rule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CogVideo-CogVideoX-Reading-Map"><span class="nav-number">7.</span> <span class="nav-text">CogVideo &#x2F; CogVideoX Reading Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-This-Repo"><span class="nav-number">7.1.</span> <span class="nav-text">Why This Repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Top-Level-Directories"><span class="nav-number">7.2.</span> <span class="nav-text">Top-Level Directories</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#README-Signals"><span class="nav-number">7.3.</span> <span class="nav-text">README Signals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-To-Read-It"><span class="nav-number">7.4.</span> <span class="nav-text">How To Read It</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Things-To-Notice"><span class="nav-number">7.5.</span> <span class="nav-text">Things To Notice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Questions"><span class="nav-number">7.6.</span> <span class="nav-text">First Questions</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Repo-Reading-Template"><span class="nav-number">8.</span> <span class="nav-text">Repo Reading Template</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Basic-Info"><span class="nav-number">8.1.</span> <span class="nav-text">1. Basic Info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Directory-Map"><span class="nav-number">8.2.</span> <span class="nav-text">2. Directory Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Inference-Path"><span class="nav-number">8.3.</span> <span class="nav-text">3. Inference Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Training-Finetune-Path"><span class="nav-number">8.4.</span> <span class="nav-text">4. Training &#x2F; Finetune Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Model-Components"><span class="nav-number">8.5.</span> <span class="nav-text">5. Model Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Important-Shapes"><span class="nav-number">8.6.</span> <span class="nav-text">6. Important Shapes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Known-Unknowns"><span class="nav-number">8.7.</span> <span class="nav-text">7. Known Unknowns</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E4%B8%80%E8%8A%82%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">这一节解决什么问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%81%8D%E8%AF%BB-repo-%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">第一遍读 repo 的目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD"><span class="nav-number">3.</span> <span class="nav-text">目录怎么判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caption-%E5%92%8C-Video-%E7%9A%84%E4%B8%8D%E5%90%8C%E8%B7%AF%E7%BA%BF"><span class="nav-number">4.</span> <span class="nav-text">Caption 和 Video 的不同路线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E8%B7%AF%E5%BE%84"><span class="nav-number">5.</span> <span class="nav-text">训练路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E7%90%86%E8%B7%AF%E5%BE%84"><span class="nav-number">6.</span> <span class="nav-text">推理路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipeline-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">7.</span> <span class="nav-text">Pipeline 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%8E%A8%E7%90%86%E5%8F%82%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">常见推理参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scheduler-And-Transformer"><span class="nav-number">9.</span> <span class="nav-text">Scheduler And Transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CFG-%E6%95%B0%E5%AD%97%E4%BE%8B%E5%AD%90"><span class="nav-number">10.</span> <span class="nav-text">CFG 数字例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipeline-%E6%90%9C%E7%B4%A2%E8%AF%8D%E5%9C%B0%E5%9B%BE"><span class="nav-number">11.</span> <span class="nav-text">Pipeline 搜索词地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E8%8A%82%E5%85%B3%E9%94%AE%E7%BB%93%E8%AE%BA"><span class="nav-number">12.</span> <span class="nav-text">本节关键结论</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -238,12 +238,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Lesson 14：开源视频生成项目阅读 | 小空间">
+      <meta itemprop="name" content="Lesson 14 Study Notes: Open Source Repo Reading | 小空间">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Lesson 14：开源视频生成项目阅读
+          Lesson 14 Study Notes: Open Source Repo Reading
         </h1>
 
         <div class="post-meta-container">
@@ -253,9 +253,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-06-17 01:24:00 / 修改时间：14:49:16" itemprop="dateCreated datePublished" datetime="2026-06-17T01:24:00+08:00">2026-06-17</time>
+      <time title="创建时间：2026-06-17 01:24:00" itemprop="dateCreated datePublished" datetime="2026-06-17T01:24:00+08:00">2026-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-06-19 17:50:07" itemprop="dateModified" datetime="2026-06-19T17:50:07+08:00">2026-06-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,110 +294,169 @@
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day14_open_source_reading/README.md</code>, <code>day14_open_source_reading/COGVIDEO_MAP.md</code>, <code>day14_open_source_reading/REPO_READING_TEMPLATE.md</code></p>
+<p>来源：<code>E:\codex_workspace\schedule</code> 中的学习材料。<br>说明：这篇文章由 Codex 按博客格式整理，正文尽量保留原始学习笔记内容。<br>原始文件：<code>day14_open_source_reading/STUDY_NOTES.md</code></p>
 </blockquote>
-<p>这节课当前还没有单独的 <code>STUDY_NOTES.md</code>，所以先把 README、CogVideo 阅读地图和 repo 阅读模板整理成一篇学习笔记。</p>
-<p>本节课从我们自己写的小模型，过渡到真实开源视频生成项目。</p>
-<p>案例项目：</p>
-<span id="more"></span>
+<h2 id="这一节解决什么问题"><a href="#这一节解决什么问题" class="headerlink" title="这一节解决什么问题"></a>这一节解决什么问题</h2><p>前面我们自己写了 Tiny VAE、DDPM、Flow Matching、Image DiT、Video DiT、CFG、多卡训练脚本。</p>
+<p>Lesson 14 开始做一件新事情：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">拿到真实开源视频生成 repo 后，知道应该从哪里读。</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CogVideo / CogVideoX</span><br><span class="line">https://github.com/zai-org/CogVideo</span><br></pre></td></tr></table></figure>
-
-<h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>学习拿到一个开源 repo 后如何拆地图：</p>
-<ol>
-<li>先看 README，确认项目能做什么。</li>
-<li>看目录结构，区分 inference、finetune、model、tools。</li>
-<li>找推理入口，理解从 prompt 到 video 的路径。</li>
-<li>找训练&#x2F;微调入口，理解数据、模型、loss、optimizer 的路径。</li>
-<li>找模型定义，确认 VAE、Transformer&#x2F;DiT、scheduler、text encoder 在哪里。</li>
-<li>看配置和脚本，而不是一开始就扎进所有源码。</li>
-</ol>
-<h2 id="CogVideo-Repo-Structure-Snapshot"><a href="#CogVideo-Repo-Structure-Snapshot" class="headerlink" title="CogVideo Repo Structure Snapshot"></a>CogVideo Repo Structure Snapshot</h2><p>GitHub 页面显示的主要目录包括：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">finetune/</span><br><span class="line">inference/</span><br><span class="line">resources/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br><span class="line">README.md</span><br><span class="line">requirements.txt</span><br><span class="line">pyproject.toml</span><br></pre></td></tr></table></figure>
-
-<p>可以先这样理解：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">inference/  推理入口：从 prompt 或 image 生成 video</span><br><span class="line">finetune/   微调入口：用自己的数据继续训练部分参数</span><br><span class="line">sat/        SAT 版本模型和训练/推理代码</span><br><span class="line">tools/      数据处理、转换、辅助脚本</span><br><span class="line">resources/ 文档、图片、示例资源</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reading-Order"><a href="#Reading-Order" class="headerlink" title="Reading Order"></a>Reading Order</h2><p>不要从所有 Python 文件开始读。</p>
-<p>推荐顺序：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">README</span><br><span class="line">-&gt; requirements / pyproject</span><br><span class="line">-&gt; inference entry</span><br><span class="line">-&gt; finetune entry</span><br><span class="line">-&gt; model definition</span><br><span class="line">-&gt; scheduler / sampling</span><br><span class="line">-&gt; dataset / dataloader</span><br><span class="line">-&gt; config</span><br></pre></td></tr></table></figure>
-
-<h2 id="What-We-Are-Looking-For"><a href="#What-We-Are-Looking-For" class="headerlink" title="What We Are Looking For"></a>What We Are Looking For</h2><p>读视频生成 repo 时，永远追这几条线：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. prompt 怎么变成 text embedding</span><br><span class="line">2. video / latent 的形状是什么</span><br><span class="line">3. VAE 在哪里 encode / decode</span><br><span class="line">4. Transformer / DiT 输入输出是什么</span><br><span class="line">5. scheduler / sampler 怎么一步步去噪或更新 latent</span><br><span class="line">6. CFG 在哪里做</span><br><span class="line">7. 训练时 loss 是怎么构造的</span><br><span class="line">8. 多卡、混合精度、checkpoint 怎么接入</span><br></pre></td></tr></table></figure>
-
-<h2 id="Connection-To-Previous-Lessons"><a href="#Connection-To-Previous-Lessons" class="headerlink" title="Connection To Previous Lessons"></a>Connection To Previous Lessons</h2><p>你前面学过的内容会在开源项目里变成真实模块：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VAE                 -&gt; video encode/decode</span><br><span class="line">DDPM / FlowMatching -&gt; scheduler / training objective</span><br><span class="line">CFG                 -&gt; guidance_scale / classifier-free guidance</span><br><span class="line">Attention / DiT     -&gt; transformer blocks</span><br><span class="line">Video tensor        -&gt; latent/video shape</span><br><span class="line">Training engineering -&gt; accelerate/DDP/mixed precision/checkpoint</span><br></pre></td></tr></table></figure>
-
-<h2 id="First-Reading-Rule"><a href="#First-Reading-Rule" class="headerlink" title="First Reading Rule"></a>First Reading Rule</h2><p>第一遍读源码，不追求每一行都懂。</p>
-<p>第一遍只回答：</p>
+<p>第一遍读源码，不追求每一行都懂，而是先拆地图。</p>
+<h2 id="第一遍读-repo-的目标"><a href="#第一遍读-repo-的目标" class="headerlink" title="第一遍读 repo 的目标"></a>第一遍读 repo 的目标</h2><p>第一遍只回答：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">入口在哪里？</span><br><span class="line">数据往哪里走？</span><br><span class="line">模型在哪里？</span><br><span class="line">输出在哪里？</span><br></pre></td></tr></table></figure>
 
+<p>不要一开始就逐行读所有 Python 文件。</p>
+<p>推荐顺序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">README</span><br><span class="line">-&gt; inference 入口</span><br><span class="line">-&gt; train / finetune 入口</span><br><span class="line">-&gt; dataset / dataloader</span><br><span class="line">-&gt; model / transformer</span><br><span class="line">-&gt; VAE</span><br><span class="line">-&gt; scheduler</span><br><span class="line">-&gt; config</span><br><span class="line">-&gt; tools</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h1 id="CogVideo-CogVideoX-Reading-Map"><a href="#CogVideo-CogVideoX-Reading-Map" class="headerlink" title="CogVideo &#x2F; CogVideoX Reading Map"></a>CogVideo &#x2F; CogVideoX Reading Map</h1><p>Source:</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/zai-org/CogVideo</span><br></pre></td></tr></table></figure>
+<h2 id="目录怎么判断"><a href="#目录怎么判断" class="headerlink" title="目录怎么判断"></a>目录怎么判断</h2><p>如果只想用 prompt 生成视频：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先看 inference/</span><br></pre></td></tr></table></figure>
 
-<h2 id="Why-This-Repo"><a href="#Why-This-Repo" class="headerlink" title="Why This Repo"></a>Why This Repo</h2><p>CogVideoX 是一个真实的视频生成开源项目，仓库同时包含：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">inference</span><br><span class="line">finetune</span><br><span class="line">SAT version</span><br><span class="line">tools</span><br><span class="line">requirements</span><br><span class="line">README</span><br></pre></td></tr></table></figure>
+<p>如果想用自己的数据继续训练或微调：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先看 finetune/ 或 train/</span><br></pre></td></tr></table></figure>
 
-<p>适合用来练习源码阅读，而不是一开始就陷入单个函数。</p>
-<h2 id="Top-Level-Directories"><a href="#Top-Level-Directories" class="headerlink" title="Top-Level Directories"></a>Top-Level Directories</h2><p>从 GitHub 仓库页面可见的主要目录：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">finetune/</span><br><span class="line">inference/</span><br><span class="line">resources/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br></pre></td></tr></table></figure>
+<p>如果想知道数据应该长什么样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先找 dataset / dataloader</span><br></pre></td></tr></table></figure>
 
-<p>初步解释：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">finetune/   微调相关代码</span><br><span class="line">inference/  推理 demo 和生成入口</span><br><span class="line">resources/ 资源和说明材料</span><br><span class="line">sat/        SAT 版本代码</span><br><span class="line">tools/      辅助工具</span><br></pre></td></tr></table></figure>
+<p>如果想找模型主体：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先搜 model / transformer / DiT / attention / block</span><br></pre></td></tr></table></figure>
 
-<h2 id="README-Signals"><a href="#README-Signals" class="headerlink" title="README Signals"></a>README Signals</h2><p>README 里出现了几个重要线索：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Quick Start</span><br><span class="line">SAT</span><br><span class="line">Diffusers</span><br><span class="line">Inference</span><br><span class="line">finetune</span><br><span class="line">Project Structure</span><br><span class="line">Model Introduction</span><br></pre></td></tr></table></figure>
+<p>如果想找训练 loss：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">优先搜 loss / mse_loss / target / prediction / noise / velocity / backward</span><br></pre></td></tr></table></figure>
 
-<p>这说明这个 repo 不是只有一个模型文件，而是有多条使用路径：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffusers 推理路径</span><br><span class="line">SAT 推理/训练路径</span><br><span class="line">finetune 微调路径</span><br></pre></td></tr></table></figure>
+<h2 id="Caption-和-Video-的不同路线"><a href="#Caption-和-Video-的不同路线" class="headerlink" title="Caption 和 Video 的不同路线"></a>Caption 和 Video 的不同路线</h2><p>caption 是字符串，神经网络不能直接吃字符串。</p>
+<p>所以 caption 路线是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">caption string</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; token ids</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text embeddings</span><br></pre></td></tr></table></figure>
 
-<h2 id="How-To-Read-It"><a href="#How-To-Read-It" class="headerlink" title="How To Read It"></a>How To Read It</h2><p>第一遍只读地图：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">README.md</span><br><span class="line">requirements.txt</span><br><span class="line">inference/</span><br><span class="line">finetune/</span><br><span class="line">sat/</span><br><span class="line">tools/</span><br></pre></td></tr></table></figure>
+<p>video 已经是连续数值张量，所以不需要 tokenizer。</p>
+<p>但 video 仍然不是 DiT 最适合直接处理的形式。真实视频生成项目里通常会先经过 VAE：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raw video</span><br><span class="line">-&gt; VAE Encoder</span><br><span class="line">-&gt; latent video</span><br><span class="line">-&gt; DiT patchify</span><br><span class="line">-&gt; latent tokens</span><br></pre></td></tr></table></figure>
 
-<p>第二遍追推理：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">-&gt; text encoding</span><br><span class="line">-&gt; latent noise</span><br><span class="line">-&gt; transformer / denoiser</span><br><span class="line">-&gt; scheduler loop</span><br><span class="line">-&gt; VAE decode</span><br><span class="line">-&gt; save video</span><br></pre></td></tr></table></figure>
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">video 不用 tokenizer，是因为它已经是数值张量；</span><br><span class="line">但它仍然需要 VAE encoder 和 patchify，才能变成 DiT 适合处理的 latent tokens。</span><br></pre></td></tr></table></figure>
 
-<p>第三遍追微调：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">video dataset</span><br><span class="line">-&gt; captions</span><br><span class="line">-&gt; VAE encode</span><br><span class="line">-&gt; sample timestep / noise</span><br><span class="line">-&gt; transformer prediction</span><br><span class="line">-&gt; loss</span><br><span class="line">-&gt; optimizer / checkpoint</span><br></pre></td></tr></table></figure>
+<h2 id="训练路径"><a href="#训练路径" class="headerlink" title="训练路径"></a>训练路径</h2><p>真实 text-to-video latent diffusion &#x2F; flow matching 训练通常可以抽象成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">videos</span><br><span class="line">-&gt; VAE Encoder</span><br><span class="line">-&gt; x_1 latent</span><br><span class="line"></span><br><span class="line">captions</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text_condition</span><br><span class="line"></span><br><span class="line">x_0 noise + t + x_1 latent</span><br><span class="line">-&gt; x_t</span><br><span class="line"></span><br><span class="line">x_t + t + text_condition</span><br><span class="line">-&gt; DiT / Transformer</span><br><span class="line">-&gt; predicted noise 或 predicted velocity</span><br><span class="line">-&gt; loss</span><br></pre></td></tr></table></figure>
 
-<h2 id="Things-To-Notice"><a href="#Things-To-Notice" class="headerlink" title="Things To Notice"></a>Things To Notice</h2><ol>
-<li>README 提到 CogVideoX 有 Diffusers 和 SAT 两种使用路径。</li>
-<li>README 中列出不同模型的显存需求、分辨率、帧数和推理精度。</li>
-<li>README 提到 VAE slicing、tiling、CPU offload、quantization 等显存优化手段。</li>
-<li>项目结构里单独有 <code>finetune/</code>，说明微调入口和推理入口通常分开。</li>
-<li>真实项目会有很多工程代码，第一遍不要试图逐行读完。</li>
+<p>所以训练时 VAE 常用的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Encoder</span><br></pre></td></tr></table></figure>
+
+<p>有时也会用 decoder 做重建检查，但训练 DiT 的主路径通常需要 encoder 得到 latents。</p>
+<h2 id="推理路径"><a href="#推理路径" class="headerlink" title="推理路径"></a>推理路径</h2><p>纯 text-to-video 推理没有真实 video 输入。</p>
+<p>起点 latent 通常来自：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">随机噪声</span><br></pre></td></tr></table></figure>
+
+<p>推理路径：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">-&gt; tokenizer</span><br><span class="line">-&gt; text encoder</span><br><span class="line">-&gt; text_condition</span><br><span class="line"></span><br><span class="line">random latent noise</span><br><span class="line">-&gt; DiT / denoiser + scheduler 多步更新</span><br><span class="line">-&gt; generated latent</span><br><span class="line">-&gt; VAE Decoder</span><br><span class="line">-&gt; video</span><br></pre></td></tr></table></figure>
+
+<p>所以推理时 VAE 必用的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Decoder</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pipeline-是什么"><a href="#Pipeline-是什么" class="headerlink" title="Pipeline 是什么"></a>Pipeline 是什么</h2><p>Diffusers 里的 <code>Pipeline</code> 不只是一个模型。</p>
+<p>它通常封装：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tokenizer</span><br><span class="line">text encoder</span><br><span class="line">VAE</span><br><span class="line">Transformer / DiT / denoiser</span><br><span class="line">scheduler</span><br><span class="line">CFG 逻辑</span><br><span class="line">latent 初始化</span><br><span class="line">VAE decode</span><br><span class="line">视频后处理和保存</span><br></pre></td></tr></table></figure>
+
+<p>所以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video = pipe(prompt=...)</span><br></pre></td></tr></table></figure>
+
+<p>看起来是一行，里面其实跑完整条推理链。</p>
+<h2 id="常见推理参数"><a href="#常见推理参数" class="headerlink" title="常见推理参数"></a>常见推理参数</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale</span><br></pre></td></tr></table></figure>
+
+<p>表示 CFG 强度，也就是 prompt &#x2F; condition 被强调的程度。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_inference_steps</span><br></pre></td></tr></table></figure>
+
+<p>表示采样 &#x2F; 去噪 &#x2F; ODE 更新步数。</p>
+<p>直觉：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale 太低：可能不太听 prompt</span><br><span class="line">guidance_scale 太高：可能画面变怪</span><br><span class="line">steps 太少：粗糙</span><br><span class="line">steps 更多：通常更好但更慢，到一定程度收益变小</span><br></pre></td></tr></table></figure>
+
+<h2 id="Scheduler-And-Transformer"><a href="#Scheduler-And-Transformer" class="headerlink" title="Scheduler And Transformer"></a>Scheduler And Transformer</h2><p>推理循环里，Transformer &#x2F; DiT 和 scheduler 的分工不同。</p>
+<p>Transformer &#x2F; DiT 负责：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据当前 latent、timestep 和 text embeddings，预测 noise / velocity / model_pred。</span><br></pre></td></tr></table></figure>
+
+<p>Scheduler 负责：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置 timesteps，并根据模型预测结果更新 latent。</span><br></pre></td></tr></table></figure>
+
+<p>抽象代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> scheduler.timesteps:</span><br><span class="line">    model_pred = transformer(latents, t, text_embeddings)</span><br><span class="line">    latents = scheduler.step(model_pred, t, latents)</span><br></pre></td></tr></table></figure>
+
+<p>所以不是 Transformer 直接生成更新后的 latent，而是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Transformer 给方向；</span><br><span class="line">Scheduler 真的走一步。</span><br></pre></td></tr></table></figure>
+
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_inference_steps = 50</span><br></pre></td></tr></table></figure>
+
+<p>不开 CFG 时，Transformer &#x2F; denoiser 通常大约 forward 50 次。</p>
+<p>如果 CFG 分开算：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uncond prediction</span><br><span class="line">cond prediction</span><br></pre></td></tr></table></figure>
+
+<p>那么 50 steps 大约是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">50 * 2 = 100 次 forward</span><br></pre></td></tr></table></figure>
+
+<p>很多框架会把 cond&#x2F;uncond 拼到 batch 维度里一次算完，但计算量仍然接近两份。</p>
+<h2 id="CFG-数字例子"><a href="#CFG-数字例子" class="headerlink" title="CFG 数字例子"></a>CFG 数字例子</h2><p>CFG 公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">final_pred = uncond_pred</span><br><span class="line">           + guidance_scale * (cond_pred - uncond_pred)</span><br></pre></td></tr></table></figure>
+
+<p>假设某一步里：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uncond_pred = 10</span><br><span class="line">cond_pred = 14</span><br></pre></td></tr></table></figure>
+
+<p>差值：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cond_pred - uncond_pred = 4</span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>4</code> 可以理解成 prompt 带来的额外方向。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 0</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 0 * 4 = 10</span><br></pre></td></tr></table></figure>
+
+<p>含义：无条件生成。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 1</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 1 * 4 = 14</span><br></pre></td></tr></table></figure>
+
+<p>含义：普通有条件生成。</p>
+<p>如果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guidance_scale = 2</span><br></pre></td></tr></table></figure>
+
+<p>那么：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_pred = 10 + 2 * 4 = 18</span><br></pre></td></tr></table></figure>
+
+<p>含义：更强调 prompt 条件。</p>
+<p>如果 guidance scale 太大，可能导致：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">画面变怪</span><br><span class="line">过饱和</span><br><span class="line">动作僵硬</span><br><span class="line">细节崩</span><br></pre></td></tr></table></figure>
+
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uncond_pred 是基础生成方向；</span><br><span class="line">cond_pred - uncond_pred 是 prompt 带来的方向修正；</span><br><span class="line">guidance_scale 是把这个修正放大多少。</span><br></pre></td></tr></table></figure>
+
+<h2 id="Pipeline-搜索词地图"><a href="#Pipeline-搜索词地图" class="headerlink" title="Pipeline 搜索词地图"></a>Pipeline 搜索词地图</h2><p>读 <code>pipeline_xxx.py</code> 时，可以用这些关键词快速定位。</p>
+<p>找 prompt embeddings：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">encode_prompt</span><br><span class="line">prompt_embeds</span><br><span class="line">negative_prompt_embeds</span><br><span class="line">text_encoder</span><br><span class="line">tokenizer</span><br><span class="line">input_ids</span><br></pre></td></tr></table></figure>
+
+<p>找 random latent：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">prepare_latents</span><br><span class="line">latents</span><br><span class="line">torch.randn</span><br><span class="line">randn_tensor</span><br><span class="line">noise</span><br><span class="line">latent_shape</span><br></pre></td></tr></table></figure>
+
+<p>找 scheduler 更新：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">scheduler</span><br><span class="line">set_timesteps</span><br><span class="line">timesteps</span><br><span class="line">scheduler.step</span><br><span class="line">model_pred</span><br><span class="line">noise_pred</span><br></pre></td></tr></table></figure>
+
+<p>找 VAE decode：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vae.decode</span><br><span class="line">decode_latents</span><br><span class="line">decode</span><br><span class="line">postprocess</span><br><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<p>判断是不是 text-to-video pipeline，可以看是否同时出现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">prompt</span><br><span class="line">tokenizer</span><br><span class="line">text_encoder</span><br><span class="line">latents</span><br><span class="line">num_frames</span><br><span class="line">transformer</span><br><span class="line">scheduler.step</span><br><span class="line">vae.decode</span><br><span class="line">video</span><br></pre></td></tr></table></figure>
+
+<h2 id="本节关键结论"><a href="#本节关键结论" class="headerlink" title="本节关键结论"></a>本节关键结论</h2><ol>
+<li>只想生成视频，先看 <code>inference/</code>。</li>
+<li>想微调，先看 <code>finetune/</code> 或 <code>train/</code>。</li>
+<li>caption 要先 tokenizer，再 text encoder。</li>
+<li>video 不用 tokenizer，但要 VAE encode 和 patchify。</li>
+<li>真实项目里 DiT 通常吃 latent tokens，不直接吃 raw video。</li>
+<li>推理时起点 latent 通常是随机噪声。</li>
+<li>Pipeline 是一整套推理流程封装，不只是裸模型。</li>
+<li>第一遍读 repo 的目标是看清入口、数据流、模型位置和输出位置。</li>
+<li>Transformer &#x2F; DiT 预测方向，scheduler 负责更新 latent。</li>
+<li>CFG 是放大 <code>cond_pred - uncond_pred</code> 这部分条件修正。</li>
 </ol>
-<h2 id="First-Questions"><a href="#First-Questions" class="headerlink" title="First Questions"></a>First Questions</h2><ol>
-<li>如果你只想生成视频，应该优先看哪个目录？</li>
-<li>如果你想用自己的数据继续训练，应该优先看哪个目录？</li>
-<li>如果你想知道模型支持什么分辨率、帧数、精度，应该优先看 README 的哪个部分？</li>
-</ol>
-<hr>
-<h1 id="Repo-Reading-Template"><a href="#Repo-Reading-Template" class="headerlink" title="Repo Reading Template"></a>Repo Reading Template</h1><p>以后读任何视频生成 repo，都可以按这个模板填。</p>
-<h2 id="1-Basic-Info"><a href="#1-Basic-Info" class="headerlink" title="1. Basic Info"></a>1. Basic Info</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Repo name:</span><br><span class="line">Paper / report:</span><br><span class="line">Main task:</span><br><span class="line">Supported input:</span><br><span class="line">Supported output:</span><br><span class="line">License:</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-Directory-Map"><a href="#2-Directory-Map" class="headerlink" title="2. Directory Map"></a>2. Directory Map</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">inference:</span><br><span class="line">training / finetune:</span><br><span class="line">model:</span><br><span class="line">dataset:</span><br><span class="line">config:</span><br><span class="line">tools:</span><br><span class="line">docs:</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Inference-Path"><a href="#3-Inference-Path" class="headerlink" title="3. Inference Path"></a>3. Inference Path</h2><p>从用户输入开始追：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prompt / image / video</span><br><span class="line">-&gt; text encoder / image encoder</span><br><span class="line">-&gt; initial latent noise</span><br><span class="line">-&gt; transformer / diffusion model</span><br><span class="line">-&gt; scheduler / sampler loop</span><br><span class="line">-&gt; VAE decoder</span><br><span class="line">-&gt; video file</span><br></pre></td></tr></table></figure>
-
-<p>需要记录：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">entry file:</span><br><span class="line">main function:</span><br><span class="line">model loading:</span><br><span class="line">guidance_scale:</span><br><span class="line">num_inference_steps:</span><br><span class="line">latent shape:</span><br><span class="line">output save path:</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-Training-Finetune-Path"><a href="#4-Training-Finetune-Path" class="headerlink" title="4. Training &#x2F; Finetune Path"></a>4. Training &#x2F; Finetune Path</h2><p>从数据开始追：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dataset</span><br><span class="line">-&gt; dataloader</span><br><span class="line">-&gt; VAE encode</span><br><span class="line">-&gt; add noise / sample t</span><br><span class="line">-&gt; model forward</span><br><span class="line">-&gt; loss</span><br><span class="line">-&gt; backward</span><br><span class="line">-&gt; optimizer.step</span><br><span class="line">-&gt; checkpoint</span><br></pre></td></tr></table></figure>
-
-<p>需要记录：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">entry file:</span><br><span class="line">dataset class:</span><br><span class="line">model class:</span><br><span class="line">loss function:</span><br><span class="line">optimizer:</span><br><span class="line">mixed precision:</span><br><span class="line">gradient accumulation:</span><br><span class="line">checkpoint:</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-Model-Components"><a href="#5-Model-Components" class="headerlink" title="5. Model Components"></a>5. Model Components</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">VAE:</span><br><span class="line">Text encoder:</span><br><span class="line">Transformer / DiT:</span><br><span class="line">Scheduler:</span><br><span class="line">Tokenizer:</span><br><span class="line">Condition module:</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-Important-Shapes"><a href="#6-Important-Shapes" class="headerlink" title="6. Important Shapes"></a>6. Important Shapes</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raw video:</span><br><span class="line">latent video:</span><br><span class="line">text embedding:</span><br><span class="line">tokens:</span><br><span class="line">model output:</span><br></pre></td></tr></table></figure>
-
-<h2 id="7-Known-Unknowns"><a href="#7-Known-Unknowns" class="headerlink" title="7. Known Unknowns"></a>7. Known Unknowns</h2><p>写下第一遍没看懂但以后要回来的地方：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">2.</span><br><span class="line">3.</span><br></pre></td></tr></table></figure>
 
     </div>
 
